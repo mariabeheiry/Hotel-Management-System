@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Hotel_Management_System.Models.Room>
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<h1>Rooms</h1>
+
+<!-- Create New Room Button -->
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Room</a>
+</p>
+
+<!-- Search Box -->
+<div class="mb-3">
+    <input type="text" id="searchBox" class="form-control" placeholder="Search by Room Number or Type..." />
+</div>
+
+<!-- Sort Options -->
+<div class="mb-3">
+    <label for="sortOrder">Sort by:</label>
+    <select id="sortOrder" class="form-select" style="width:200px; display:inline-block;">
+        <option value="">Room Number</option>
+        <option value="price_asc">Price: Low → High</option>
+        <option value="price_desc">Price: High → Low</option>
+        <option value="available">Availability</option>
+    </select>
+</div>
+
+<!-- Rooms Table -->
+<table class="table table-striped table-bordered table-hover" id="roomsTable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.RoomNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.RoomType)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.IsAvailable)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="roomsTableBody">
+        @await Html.PartialAsync("_RoomSearchResults", Model)
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function updateRooms() {
+                var term = $("#searchBox").val();
+                var sortOrder = $("#sortOrder").val();
+
+                $.get('@Url.Action("Search", "Rooms")', { term: term, sortOrder: sortOrder }, function (data) {
+                    $("#roomsTableBody").html(data);
+                });
+            }
+
+            // Trigger on search input
+            $("#searchBox").on("keyup", updateRooms);
+
+            // Trigger on sort dropdown change
+            $("#sortOrder").on("change", updateRooms);
+        });
+    </script>
+}

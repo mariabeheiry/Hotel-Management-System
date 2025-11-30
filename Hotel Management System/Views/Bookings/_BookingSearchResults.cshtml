@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Hotel_Management_System.Models.Booking>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Guest.Name</td>
+        <td>@item.Room.RoomNumber</td>
+        <td>@item.CheckInDate.ToShortDateString()</td>
+        <td>@item.CheckOutDate.ToShortDateString()</td>
+        <td>@item.BookingStatus</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.BookingID" class="btn btn-sm btn-primary">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.BookingID" class="btn btn-sm btn-info">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.BookingID" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+}

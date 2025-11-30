@@ -1,0 +1,40 @@
+﻿@model Hotel_Management_System.Models.Room
+
+@{
+    ViewData["Title"] = "Booking History for Room " + Model.RoomNumber;
+}
+
+<h1>Booking History for Room @Model.RoomNumber</h1>
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">Back to Rooms</a>
+</p>
+
+@if (Model.Bookings != null && Model.Bookings.Any())
+{
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Guest Name</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.Bookings.OrderBy(b => b.CheckInDate))
+            {
+                <tr>
+                    <td>@booking.Guest.Name</td>
+                    <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td>
+                    <td>@booking.CheckOutDate.ToString("yyyy-MM-dd")</td>
+                    <td>@booking.BookingStatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found for this room.</p>
+}

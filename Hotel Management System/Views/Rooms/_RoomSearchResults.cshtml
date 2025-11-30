@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Hotel_Management_System.Models.Room>
+
+@foreach (var room in Model)
+{
+    <tr class="@(room.IsAvailable ? "" : "table-warning")">
+        <td>@room.RoomNumber</td>
+        <td>@room.RoomType</td>
+        <td>@room.Price.ToString("C")</td>
+        <td>
+            @if (room.IsAvailable)
+            {
+                <span class="badge bg-success">Available</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Booked</span>
+            }
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@room.RoomID" class="btn btn-sm btn-primary">Edit</a>
+            <a asp-action="Details" asp-route-id="@room.RoomID" class="btn btn-sm btn-info">Details</a>
+            <a asp-action="Delete" asp-route-id="@room.RoomID" class="btn btn-sm btn-danger">Delete</a>
+            <a asp-action="RoomReport" asp-route-id="@room.RoomID" class="btn btn-sm btn-secondary">Booking History</a>
+        </td>
+    </tr>
+}

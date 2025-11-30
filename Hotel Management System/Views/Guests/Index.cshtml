@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Hotel_Management_System.Models.Guest>
+
+@{
+    ViewData["Title"] = "Guests";
+}
+
+<h1>Guests</h1>
+
+<!-- Create New Button -->
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Guest</a>
+</p>
+
+<!-- Search & Sort -->
+<div class="row mb-2">
+    <div class="col-md-6">
+        <input type="text" id="searchBox" class="form-control" placeholder="Search by Name, Phone, or Email..." />
+    </div>
+    <div class="col-md-3">
+        <select id="sortOrder" class="form-select">
+            <option value="name_asc">Name A → Z</option>
+            <option value="name_desc">Name Z → A</option>
+            <option value="email">Email</option>
+        </select>
+    </div>
+</div>
+
+<!-- Guests Table -->
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="guestsTableBody">
+        @await Html.PartialAsync("_GuestSearchResults", Model)
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function updateGuests() {
+                var term = $("#searchBox").val();
+                var sortOrder = $("#sortOrder").val();
+
+                $.get('@Url.Action("Search", "Guests")', { term: term, sortOrder: sortOrder }, function (data) {
+                    $("#guestsTableBody").html(data);
+                });
+            }
+
+            $("#searchBox").on("keyup", updateGuests);
+            $("#sortOrder").on("change", updateGuests);
+        });
+    </script>
+}
