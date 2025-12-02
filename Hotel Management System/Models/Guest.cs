@@ -15,6 +15,6 @@ namespace Hotel_Management_System.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Booking>? Bookings { get; set; } = new List<Booking>();
     }
 }

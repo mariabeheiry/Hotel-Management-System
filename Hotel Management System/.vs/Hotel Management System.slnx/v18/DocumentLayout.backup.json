@@ -3,104 +3,108 @@
   "WorkspaceRootPath": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\rooms\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\_roomsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\rooms\\_roomsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\roomreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\rooms\\roomreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\bookings\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\validators\\dategreaterthanattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:validators\\dategreaterthanattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\guestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:controllers\\guestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:models\\guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\guests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\guests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\rooms\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\receipts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\receipts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\guestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:controllers\\guestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\receipts\\guestreceipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\receipts\\guestreceipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\_bookingsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\bookings\\_bookingsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\guests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\guests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:models\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\guests\\_guestsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\guests\\_guestsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\rooms\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\validators\\dategreaterthanattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:validators\\dategreaterthanattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\roomreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\rooms\\roomreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\rooms\\_roomsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\rooms\\_roomsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\_bookingsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\bookings\\_bookingsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\20251130192822_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251130192822_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\receipts\\guestreceipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\receipts\\guestreceipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:models\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:models\\guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\guests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\guests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60372257-7BC5-458A-816F-FF9A628A0A9C}|Hotel Management System.csproj|solutionrelative:models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\views\\guests\\_guestsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:views\\guests\\_guestsearchresults.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|c:\\users\\maria\\onedrive\\desktop\\hotel management  system project\\hotel-management-system\\hotel management system\\migrations\\20251130192822_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932FE230-A5C0-752B-AC79-35B6FD6DB7F0}|Hotel Management System.csproj|solutionrelative:migrations\\20251130192822_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -110,297 +114,180 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Rooms\\Index.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Index.cshtml*",
-              "RelativeToolTip": "Views\\Rooms\\Index.cshtml*",
-              "ViewState": "AgIAACwAAAAAAAAAAAAgwEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T20:53:43.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RoomsController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\RoomsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RoomsController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\RoomsController.cs*",
-              "RelativeToolTip": "Controllers\\RoomsController.cs*",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAQwL0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:14:24.519Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_RoomSearchResults.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\_RoomSearchResults.cshtml",
-              "RelativeDocumentMoniker": "Views\\Rooms\\_RoomSearchResults.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\_RoomSearchResults.cshtml*",
-              "RelativeToolTip": "Views\\Rooms\\_RoomSearchResults.cshtml*",
-              "ViewState": "AgIAABYAAAAAAAAAAAAcwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:30:52.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RoomReport.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\RoomReport.cshtml",
-              "RelativeDocumentMoniker": "Views\\Rooms\\RoomReport.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\RoomReport.cshtml*",
-              "RelativeToolTip": "Views\\Rooms\\RoomReport.cshtml*",
-              "ViewState": "AgIAABMAAAAAAAAAAAAIwCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T22:01:34.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReceiptsController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\ReceiptsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ReceiptsController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\ReceiptsController.cs*",
-              "RelativeToolTip": "Controllers\\ReceiptsController.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:17:30.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BookingsController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\BookingsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BookingsController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\BookingsController.cs*",
-              "RelativeToolTip": "Controllers\\BookingsController.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:16:45.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GuestsController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\GuestsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GuestsController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\GuestsController.cs*",
-              "RelativeToolTip": "Controllers\\GuestsController.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:15:48.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T21:57:35.615Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Receipt.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Receipt.cs",
-              "RelativeDocumentMoniker": "Models\\Receipt.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Receipt.cs",
-              "RelativeToolTip": "Models\\Receipt.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T19:19:45.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Receipts\\Index.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\Index.cshtml*",
-              "RelativeToolTip": "Views\\Receipts\\Index.cshtml*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:48:06.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GuestReceipt.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\GuestReceipt.cshtml",
-              "RelativeDocumentMoniker": "Views\\Receipts\\GuestReceipt.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\GuestReceipt.cshtml*",
-              "RelativeToolTip": "Views\\Receipts\\GuestReceipt.cshtml*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwCEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:51:18.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Bookings\\Index.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Index.cshtml*",
-              "RelativeToolTip": "Views\\Bookings\\Index.cshtml*",
-              "ViewState": "AgIAACgAAAAAAAAAAAAwwDsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:40:54.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_BookingSearchResults.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\_BookingSearchResults.cshtml",
-              "RelativeDocumentMoniker": "Views\\Bookings\\_BookingSearchResults.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\_BookingSearchResults.cshtml*",
-              "RelativeToolTip": "Views\\Bookings\\_BookingSearchResults.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:42:09.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Guests\\Index.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Index.cshtml*",
-              "RelativeToolTip": "Views\\Guests\\Index.cshtml*",
-              "ViewState": "AgIAACIAAAAAAAAAAAAwwDsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T20:59:02.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "_GuestSearchResults.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\_GuestSearchResults.cshtml",
-              "RelativeDocumentMoniker": "Views\\Guests\\_GuestSearchResults.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\_GuestSearchResults.cshtml*",
-              "RelativeToolTip": "Views\\Guests\\_GuestSearchResults.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:39:34.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Rooms\\Create.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Create.cshtml",
-              "RelativeToolTip": "Views\\Rooms\\Create.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAwwAwAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-30T21:17:04.049Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Bookings\\Create.cshtml",
               "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Create.cshtml",
               "RelativeToolTip": "Views\\Bookings\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-30T20:42:13.869Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DateGreaterThanAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Validators\\DateGreaterThanAttribute.cs",
-              "RelativeDocumentMoniker": "Validators\\DateGreaterThanAttribute.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Validators\\DateGreaterThanAttribute.cs",
-              "RelativeToolTip": "Validators\\DateGreaterThanAttribute.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAADwvyEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:35:49.412Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 1,
               "Title": "Booking.cs",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Booking.cs",
               "RelativeDocumentMoniker": "Models\\Booking.cs",
               "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Booking.cs",
               "RelativeToolTip": "Models\\Booking.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAcwBsAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T19:09:54.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAYwB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BookingsController.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\BookingsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingsController.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\BookingsController.cs*",
+              "RelativeToolTip": "Controllers\\BookingsController.cs*",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAcwGMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T19:25:01.105Z",
+              "WhenOpened": "2025-11-30T20:16:45.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookings\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Bookings\\Edit.cshtml",
+              "ViewState": "AgIAABYAAAAAAAAAAAAIwCcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T09:25:53.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "Models\\Room.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Room.cs",
+              "RelativeToolTip": "Models\\Room.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwBUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T19:09:26.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DateGreaterThanAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Validators\\DateGreaterThanAttribute.cs",
+              "RelativeDocumentMoniker": "Validators\\DateGreaterThanAttribute.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Validators\\DateGreaterThanAttribute.cs",
+              "RelativeToolTip": "Validators\\DateGreaterThanAttribute.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAiwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T20:35:49.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Guest.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Guest.cs",
+              "RelativeDocumentMoniker": "Models\\Guest.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Guest.cs",
+              "RelativeToolTip": "Models\\Guest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T19:09:40.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Guests\\Create.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Create.cshtml",
+              "RelativeToolTip": "Views\\Guests\\Create.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAgwAoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-02T08:49:45.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Rooms\\Create.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\Create.cshtml",
+              "RelativeToolTip": "Views\\Rooms\\Create.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAgwA0AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T21:17:04.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RoomsController.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\RoomsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoomsController.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\RoomsController.cs",
+              "RelativeToolTip": "Controllers\\RoomsController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAA0wEkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T20:14:24.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GuestsController.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\GuestsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GuestsController.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\GuestsController.cs",
+              "RelativeToolTip": "Controllers\\GuestsController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAgwFQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T20:15:48.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAwwAoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-11-30T19:27:09.375Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "20251130192822_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\20251130192822_InitialCreate.cs",
-              "RelativeDocumentMoniker": "Migrations\\20251130192822_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\20251130192822_InitialCreate.cs",
-              "RelativeToolTip": "Migrations\\20251130192822_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T19:28:22.628Z",
+              "WhenOpened": "2025-11-30T19:25:01.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 13,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Models\\Data\\ApplicationDbContext.cs",
@@ -413,29 +300,150 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Guest.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Guest.cs",
-              "RelativeDocumentMoniker": "Models\\Guest.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Guest.cs",
-              "RelativeToolTip": "Models\\Guest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAgwLoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T19:09:40.782Z",
+              "WhenOpened": "2025-12-01T18:54:47.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Room.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Room.cs",
-              "RelativeDocumentMoniker": "Models\\Room.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Room.cs",
-              "RelativeToolTip": "Models\\Room.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBAAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "ReceiptsController.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\ReceiptsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReceiptsController.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\ReceiptsController.cs",
+              "RelativeToolTip": "Controllers\\ReceiptsController.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAowKsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T19:09:26.237Z",
+              "WhenOpened": "2025-12-01T18:38:47.793Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Receipt.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Receipt.cs",
+              "RelativeDocumentMoniker": "Models\\Receipt.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Models\\Receipt.cs",
+              "RelativeToolTip": "Models\\Receipt.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T08:10:22.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RoomReport.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\RoomReport.cshtml",
+              "RelativeDocumentMoniker": "Views\\Rooms\\RoomReport.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\RoomReport.cshtml",
+              "RelativeToolTip": "Views\\Rooms\\RoomReport.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-01T20:02:53.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "_RoomSearchResults.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\_RoomSearchResults.cshtml",
+              "RelativeDocumentMoniker": "Views\\Rooms\\_RoomSearchResults.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Rooms\\_RoomSearchResults.cshtml",
+              "RelativeToolTip": "Views\\Rooms\\_RoomSearchResults.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-01T20:02:41.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_BookingSearchResults.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\_BookingSearchResults.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookings\\_BookingSearchResults.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\_BookingSearchResults.cshtml",
+              "RelativeToolTip": "Views\\Bookings\\_BookingSearchResults.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T21:42:09.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T21:57:35.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GuestReceipt.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\GuestReceipt.cshtml",
+              "RelativeDocumentMoniker": "Views\\Receipts\\GuestReceipt.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Receipts\\GuestReceipt.cshtml",
+              "RelativeToolTip": "Views\\Receipts\\GuestReceipt.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T21:51:18.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookings\\Index.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Bookings\\Index.cshtml",
+              "RelativeToolTip": "Views\\Bookings\\Index.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAwwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T21:40:54.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Guests\\Index.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\Index.cshtml",
+              "RelativeToolTip": "Views\\Guests\\Index.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAwwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T20:59:02.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_GuestSearchResults.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\_GuestSearchResults.cshtml",
+              "RelativeDocumentMoniker": "Views\\Guests\\_GuestSearchResults.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Views\\Guests\\_GuestSearchResults.cshtml",
+              "RelativeToolTip": "Views\\Guests\\_GuestSearchResults.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T21:39:34.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "20251130192822_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\20251130192822_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251130192822_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Desktop\\Hotel Management  System Project\\Hotel-Management-System\\Hotel Management System\\Migrations\\20251130192822_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20251130192822_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T19:28:22.628Z"
             }
           ]
         }

@@ -4,6 +4,13 @@ using HotelBookingSystem.Validators;
 
 namespace Hotel_Management_System.Models
 {
+    public enum BookingStatus
+    {
+        Confirmed,
+        Cancelled,
+        Completed
+    }
+
     public class Booking
     {
         [Key]
@@ -25,11 +32,11 @@ namespace Hotel_Management_System.Models
 
         [Required(ErrorMessage = "Check-out date is required")]
         [DataType(DataType.Date)]
-        [DateGreaterThan("CheckIn", ErrorMessage = "Check-out must be after check-in")]
+        [DateGreaterThan("CheckInDate", ErrorMessage = "Check-out must be after check-in")]
         public DateTime CheckOutDate { get; set; }
 
         [Required]
-        public string BookingStatus { get; set; } // confirmed, cancelled, completed
+        public BookingStatus BookingStatus { get; set; } = BookingStatus.Confirmed; // confirmed, cancelled, completed
 
         public Receipt Receipt { get; set; }
     }

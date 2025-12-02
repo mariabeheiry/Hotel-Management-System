@@ -34,10 +34,14 @@
                 <span asp-validation-for="CheckOutDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BookingStatus" class="control-label"></label>
-                <input asp-for="BookingStatus" class="form-control" />
+                <label asp-for="BookingStatus"></label>
+                <select asp-for="BookingStatus"
+                        class="form-control"
+                        asp-items="Html.GetEnumSelectList<BookingStatus>()">
+                </select>
                 <span asp-validation-for="BookingStatus" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

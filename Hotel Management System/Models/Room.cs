@@ -19,6 +19,6 @@ namespace Hotel_Management_System.Models
 
         public bool IsAvailable { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Booking>? Bookings { get; set; } = new List<Booking>();
     }
 }

@@ -79,6 +79,10 @@ namespace Hotel_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GuestID,Name,Phone,Email")] Guest guest)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(guest);

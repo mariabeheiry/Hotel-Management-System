@@ -68,9 +68,14 @@ namespace Hotel_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RoomID,RoomNumber,RoomType,Price,IsAvailable")] Room room)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(room);
+                _context.Rooms.Add(room); //edited
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
