@@ -19,12 +19,12 @@ namespace Hotel_Management_System.Models
         [Required(ErrorMessage = "Guest is required")]
         [ForeignKey("Guest")]
         public int GuestID { get; set; }
-        public Guest Guest { get; set; }
+        public Guest? Guest { get; set; }
 
         [Required(ErrorMessage = "Room is required")]
         [ForeignKey("Room")]
         public int RoomID { get; set; }
-        public Room Room { get; set; }
+        public Room? Room { get; set; }
 
         [Required(ErrorMessage = "Check-in date is required")]
         [DataType(DataType.Date)]
@@ -38,6 +38,6 @@ namespace Hotel_Management_System.Models
         [Required]
         public BookingStatus BookingStatus { get; set; } = BookingStatus.Confirmed; // confirmed, cancelled, completed
 
-        public Receipt Receipt { get; set; }
+        public Receipt? Receipt { get; set; }
     }
 }

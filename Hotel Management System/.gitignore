@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.cache
+*.dbmdl
+
+# Build results
+bin/
+obj/
+
+# EF Migrations snapshot 
+*.Snapshot.cs
+
+# Other temp files
+*.log
+*.vsix

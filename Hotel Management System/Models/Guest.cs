@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hotel_Management_System.Models
 {
@@ -14,7 +15,10 @@ namespace Hotel_Management_System.Models
 
         [EmailAddress]
         public string Email { get; set; }
+        public string? IdentityUserId { get; set; }
+        public IdentityUser? IdentityUser { get; set; }
 
         public ICollection<Booking>? Bookings { get; set; } = new List<Booking>();
     }
+
 }
