@@ -36,6 +36,7 @@ namespace Hotel_Management_System.Controllers
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "Guest");
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
@@ -58,7 +59,19 @@ namespace Hotel_Management_System.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-            if (result.Succeeded) return RedirectToAction("Index", "Home");
+            
+            if (result.Succeeded)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    return RedirectToAction("AdminHome", "Dashboard");
+
+                if (await _userManager.IsInRoleAsync(user, "Guest"))
+                    return RedirectToAction("GuestHome", "Dashboard");
+                
+                return RedirectToAction("Index", "Home");
+            }
 
             ModelState.AddModelError("", "Invalid login attempt.");
             return View(model);

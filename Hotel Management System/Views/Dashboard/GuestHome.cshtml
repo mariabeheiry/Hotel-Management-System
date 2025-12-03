@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Guest Dashboard";
+}
+
+<h2 class="mb-4">Welcome to Your Dashboard</h2>
+
+<div class="row">
+
+    <!-- My Bookings -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">My Bookings</h5>
+                <p class="card-text">
+                    View, edit or cancel your bookings.
+                </p>
+                <a asp-controller="Guest" asp-action="MyBookings" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book New Room -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Book a Room</h5>
+                <p class="card-text">
+                    Search available rooms and make new bookings.
+                </p>
+                <a asp-controller="Guest" asp-action="SearchRooms" class="btn btn-primary">Search Rooms</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Multiple Rooms -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Multi-Room Booking</h5>
+                <p class="card-text">
+                    Book multiple rooms in a single booking.
+                </p>
+                <a asp-controller="Guest" asp-action="NewMultiBooking" class="btn btn-primary">Start</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search by Date Range -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Search by Dates</h5>
+                <p class="card-text">
+                    Find rooms available for your stay period.
+                </p>
+                <a asp-controller="Guest" asp-action="SearchByDate" class="btn btn-primary">Search</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Receipt -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Print Receipt</h5>
+                <p class="card-text">
+                    View or download your booking receipts as PDF.
+                </p>
+                <a asp-controller="Guest" asp-action="PrintReceipt" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+</div>

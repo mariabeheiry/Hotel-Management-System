@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row">
+
+    <!-- Manage Rooms -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Manage Rooms</h5>
+                <p class="card-text">
+                    View, add, update, or delete rooms.
+                </p>
+                <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manage Bookings -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Manage Bookings</h5>
+                <p class="card-text">
+                    View all bookings, cancel, or edit bookings.
+                </p>
+                <a asp-controller="Bookings" asp-action="Index" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Bookings By Room -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Bookings by Room</h5>
+                <p class="card-text">
+                    View bookings filtered by room number.
+                </p>
+                <a asp-controller="Reports" asp-action="BookingsByRoom" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revenue Reports -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Revenue Report</h5>
+                <p class="card-text">
+                    View total revenue for a selected date range.
+                </p>
+                <a asp-controller="Reports" asp-action="Revenue" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Printing -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Print Receipt</h5>
+                <p class="card-text">
+                    Generate and download PDF receipts for bookings.
+                </p>
+                <a asp-controller="Reports" asp-action="GenerateReceipt" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+    </div>
+
+</div>
