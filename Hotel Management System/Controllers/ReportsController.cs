@@ -1,5 +1,6 @@
 ﻿using Hotel_Management_System.Data;
 using Hotel_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
@@ -7,6 +8,7 @@ using QuestPDF.Infrastructure;
 
 namespace Hotel_Management_System.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ReportsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -84,7 +86,10 @@ namespace Hotel_Management_System.Controllers
                                 stack.Item().Text("No bookings").Italic();
                             }
 
-                            stack.Item().LineHorizontal(1).MarginTop(5).MarginBottom(5);
+                            stack.Item().PaddingVertical(5).Element(container =>
+                            {
+                                container.LineHorizontal(1);
+                            });
 
                         }
                     });

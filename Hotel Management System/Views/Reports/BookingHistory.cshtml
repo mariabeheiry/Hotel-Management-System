@@ -1,0 +1,43 @@
+﻿@model List<Hotel_Management_System.Models.Room>
+
+@{
+    ViewData["Title"] = "Booking History";
+}
+
+<h2>Room Booking History</h2>
+
+<a class="btn btn-primary mb-3" href="@Url.Action("BookingHistoryPdf")">Export PDF</a>
+
+@foreach (var room in Model)
+{
+    <h4>Room @room.RoomNumber (@room.RoomType)</h4>
+
+    @if (room.Bookings.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Guest Name</th>
+                    <th>Check-In</th>
+                    <th>Check-Out</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in room.Bookings.OrderBy(b => b.CheckInDate))
+                {
+                    <tr>
+                        <td>@booking.Guest?.Name ?? "N/A"</td>
+                        <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td>
+                        <td>@booking.CheckOutDate.ToString("yyyy-MM-dd")</td>
+                        <td>@booking.BookingStatus.ToString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p><em>No bookings</em></p>
+    }
+}
