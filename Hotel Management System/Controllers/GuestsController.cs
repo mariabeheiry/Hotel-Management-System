@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Hotel_Management_System.Data;
+using Hotel_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Hotel_Management_System.Data;
-using Hotel_Management_System.Models;
 
 namespace Hotel_Management_System.Controllers
 {
+    
     public class GuestsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -58,6 +60,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // GET: Guests/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -69,12 +72,14 @@ namespace Hotel_Management_System.Controllers
         }
 
         // GET: Guests/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Guests/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GuestID,Name,Phone,Email")] Guest guest)
@@ -93,6 +98,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // GET: Guests/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -104,6 +110,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // POST: Guests/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("GuestID,Name,Phone,Email")] Guest guest)
@@ -128,6 +135,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // GET: Guests/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -139,6 +147,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // POST: Guests/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Revenue Report";
+}
+
+<h2 class="mb-4">Revenue Report</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <h4 class="mt-3">Summary</h4>
+    <ul>
+        <li><strong>Total Revenue:</strong> @ViewBag.TotalRevenue EGP</li>
+        <li><strong>Total Bookings:</strong> @ViewBag.TotalBookings</li>
+        <li><strong>Confirmed:</strong> @ViewBag.Confirmed</li>
+        <li><strong>Cancelled:</strong> @ViewBag.Cancelled</li>
+        <li><strong>Completed:</strong> @ViewBag.Completed</li>
+    </ul>
+
+    <hr />
+
+    <h4>Revenue By Month</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.RevenueByMonth)
+            {
+                <tr>
+                    <td>@item.Year</td>
+                    <td>@item.Month</td>
+                    <td>@item.Revenue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Revenue By Room Type</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Room Type</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.RevenueByRoomType)
+            {
+                <tr>
+                    <td>@item.RoomType</td>
+                    <td>@item.Revenue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

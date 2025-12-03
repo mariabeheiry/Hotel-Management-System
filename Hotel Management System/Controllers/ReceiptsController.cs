@@ -1,11 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Hotel_Management_System.Data;
+using Hotel_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Hotel_Management_System.Data;
-using Hotel_Management_System.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hotel_Management_System.Controllers
 {
@@ -47,6 +48,7 @@ namespace Hotel_Management_System.Controllers
 
 
         // GET: Receipts/Create
+     
         public IActionResult Create()
         {
             // Only allow bookings that do NOT have receipts yet
@@ -69,6 +71,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // POST: Receipts/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Receipt receipt)
@@ -126,6 +129,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // GET: Bookings/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -139,6 +143,7 @@ namespace Hotel_Management_System.Controllers
         }
 
         // POST: Bookings/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Receipt receipt)

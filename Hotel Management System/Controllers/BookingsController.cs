@@ -17,7 +17,6 @@ namespace Hotel_Management_System.Controllers
             _context = context;
         }
 
-       
         // GET: Bookings 
         public async Task<IActionResult> Index()
         {
@@ -29,7 +28,6 @@ namespace Hotel_Management_System.Controllers
             return View(await bookings.ToListAsync());
         }
 
-        
         // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,7 +44,6 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-
         // GET: Bookings/Create
         public IActionResult Create()
         {
@@ -54,7 +51,6 @@ namespace Hotel_Management_System.Controllers
             ViewData["GuestID"] = new SelectList(_context.Guests, "GuestID", "Name");
             return View();
         }
-
 
         // POST: Bookings/Create
         [HttpPost]
@@ -101,7 +97,6 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-
         // GET: Bookings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,7 +110,6 @@ namespace Hotel_Management_System.Controllers
 
             return View(booking);
         }
-
 
         // POST: Bookings/Edit/5
         [HttpPost]
@@ -155,7 +149,6 @@ namespace Hotel_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
         // GET: Bookings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -172,19 +165,33 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-
         // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var booking = await _context.Bookings.FindAsync(id);
+            var booking = await _context.Bookings
+                .Include(b => b.Receipt)
+                .FirstOrDefaultAsync(b => b.BookingID == id);
+
             if (booking == null) return NotFound();
 
+            // Make room available again
             var room = await _context.Rooms.FindAsync(booking.RoomID);
-            if (room != null) room.IsAvailable = true;
+            if (room != null)
+            {
+                room.IsAvailable = true;
+            }
 
+            // Delete receipt if exists
+            if (booking.Receipt != null)
+            {
+                _context.Receipts.Remove(booking.Receipt);
+            }
+
+            // Delete booking
             _context.Bookings.Remove(booking);
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
