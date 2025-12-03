@@ -17,9 +17,8 @@ namespace Hotel_Management_System.Controllers
             _context = context;
         }
 
-        // ----------------------------------------------------------------------
-        // LIST
-        // ----------------------------------------------------------------------
+       
+        // GET: Bookings 
         public async Task<IActionResult> Index()
         {
             var bookings = _context.Bookings
@@ -30,9 +29,8 @@ namespace Hotel_Management_System.Controllers
             return View(await bookings.ToListAsync());
         }
 
-        // ----------------------------------------------------------------------
-        // DETAILS
-        // ----------------------------------------------------------------------
+        
+        // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -48,9 +46,8 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // ----------------------------------------------------------------------
-        // CREATE (GET)
-        // ----------------------------------------------------------------------
+
+        // GET: Bookings/Create
         public IActionResult Create()
         {
             ViewData["RoomID"] = new SelectList(_context.Rooms.Where(r => r.IsAvailable), "RoomID", "RoomNumber");
@@ -58,9 +55,8 @@ namespace Hotel_Management_System.Controllers
             return View();
         }
 
-        // ----------------------------------------------------------------------
-        // CREATE (POST)
-        // ----------------------------------------------------------------------
+
+        // POST: Bookings/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookingID,GuestID,RoomID,CheckInDate,CheckOutDate")] Booking booking)
@@ -105,9 +101,8 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // ----------------------------------------------------------------------
-        // EDIT (GET)
-        // ----------------------------------------------------------------------
+
+        // GET: Bookings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -121,9 +116,8 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // ----------------------------------------------------------------------
-        // EDIT (POST)
-        // ----------------------------------------------------------------------
+
+        // POST: Bookings/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Booking booking)
@@ -161,9 +155,8 @@ namespace Hotel_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // ----------------------------------------------------------------------
-        // DELETE (GET)
-        // ----------------------------------------------------------------------
+
+        // GET: Bookings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -179,9 +172,8 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // ----------------------------------------------------------------------
-        // DELETE (POST)
-        // ----------------------------------------------------------------------
+
+        // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -18,9 +18,7 @@ namespace Hotel_Management_System.Controllers
             _context = context;
         }
 
-        // ----------------------------------------------------------------------
-        // LIST
-        // ----------------------------------------------------------------------
+        // GET: Receipts
         public async Task<IActionResult> Index()
         {
             var receipts = _context.Receipts
@@ -31,9 +29,7 @@ namespace Hotel_Management_System.Controllers
             return View(await receipts.ToListAsync());
         }
 
-        // ----------------------------------------------------------------------
-        // DETAILS
-        // ----------------------------------------------------------------------
+        // GET: Receipts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -49,9 +45,8 @@ namespace Hotel_Management_System.Controllers
             return View(receipt);
         }
 
-        // ----------------------------------------------------------------------
-        // CREATE (GET)
-        // ----------------------------------------------------------------------
+
+        // GET: Receipts/Create
         public IActionResult Create()
         {
             // Only allow bookings that do NOT have receipts yet
@@ -73,9 +68,7 @@ namespace Hotel_Management_System.Controllers
             return View();
         }
 
-        // ----------------------------------------------------------------------
-        // CREATE (POST)
-        // ----------------------------------------------------------------------
+        // POST: Receipts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Receipt receipt)
@@ -132,9 +125,7 @@ namespace Hotel_Management_System.Controllers
             );
         }
 
-        // ----------------------------------------------------------------------
-        // EDIT (GET)
-        // ----------------------------------------------------------------------
+        // GET: Bookings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -147,9 +138,7 @@ namespace Hotel_Management_System.Controllers
             return View(receipt);
         }
 
-        // ----------------------------------------------------------------------
-        // EDIT (POST)
-        // ----------------------------------------------------------------------
+        // POST: Bookings/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Receipt receipt)
@@ -187,9 +176,7 @@ namespace Hotel_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // ----------------------------------------------------------------------
-        // DELETE (GET)
-        // ----------------------------------------------------------------------
+        // GET: Receipts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -205,9 +192,7 @@ namespace Hotel_Management_System.Controllers
             return View(receipt);
         }
 
-        // ----------------------------------------------------------------------
-        // DELETE (POST)
-        // ----------------------------------------------------------------------
+        // POST: Receipts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
