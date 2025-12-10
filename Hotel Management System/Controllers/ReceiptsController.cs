@@ -43,7 +43,7 @@ namespace Hotel_Management_System.Controllers
 
             if (receipt == null) return NotFound();
 
-            return View(receipt);
+            return View("GuestReceipt",receipt);
         }
 
 

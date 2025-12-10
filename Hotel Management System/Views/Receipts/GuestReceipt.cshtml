@@ -28,6 +28,6 @@
 <p class="fs-4 fw-bold">@Model.TotalAmount.ToString("C")</p>
 
 <p>
-    <a asp-action="Index" class="btn btn-primary">Back to Receipts</a>
+    <a asp-controller="Dashboard" asp-action="GuestHome" class="btn btn-primary">Back to Dashboard</a>
     <button class="btn btn-success" onclick="window.print()">Print Receipt</button>
 </p>

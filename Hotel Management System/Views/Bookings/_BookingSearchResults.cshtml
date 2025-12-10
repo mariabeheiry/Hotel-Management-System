@@ -12,6 +12,20 @@
             <a asp-action="Edit" asp-route-id="@item.BookingID" class="btn btn-sm btn-primary">Edit</a>
             <a asp-action="Details" asp-route-id="@item.BookingID" class="btn btn-sm btn-info">Details</a>
             <a asp-action="Delete" asp-route-id="@item.BookingID" class="btn btn-sm btn-danger">Delete</a>
+
+            @if (item.Receipt != null)
+            {
+                <a asp-controller="Receipts"
+                   asp-action="Details"
+                   asp-route-id="@item.Receipt.ReceiptID"
+                   class="btn btn-sm btn-primary">
+                    Print Receipt
+                </a>
+            }
+            else
+            {
+                <span class="text-muted">No Receipt</span>
+            }
         </td>
     </tr>
 }

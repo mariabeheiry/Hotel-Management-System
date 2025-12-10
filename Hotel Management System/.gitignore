@@ -15,3 +15,6 @@ obj/
 # Other temp files
 *.log
 *.vsix
+
+#connection file
+appsettings.json
