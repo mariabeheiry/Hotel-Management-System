@@ -65,4 +65,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
 app.Run();

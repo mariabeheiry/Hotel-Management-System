@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using QuestPDF.Fluent;
 
 namespace Hotel_Management_System.Controllers
 {
@@ -62,6 +64,7 @@ namespace Hotel_Management_System.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
+            ViewBag.RoomTypes = new List<string> { "Single", "Double", "Suite" };
             return View();
         }
 
@@ -196,5 +199,24 @@ namespace Hotel_Management_System.Controllers
 
             return View(room);
         }
+
+    
+
+public async Task<IActionResult> DownloadRoomReport(int id)
+    {
+        var room = await _context.Rooms
+            .Include(r => r.Bookings)
+            .ThenInclude(b => b.Guest)
+            .FirstOrDefaultAsync(r => r.RoomID == id);
+
+        if (room == null)
+            return NotFound();
+
+        var pdf = new RoomReportPdf(room);
+        var file = pdf.GeneratePdf();
+
+        return File(file, "application/pdf", $"Room_{room.RoomNumber}_Report.pdf");
     }
+
+}
 }

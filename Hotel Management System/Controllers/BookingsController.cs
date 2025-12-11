@@ -333,6 +333,31 @@ namespace Hotel_Management_System.Controllers
             return View("ConfirmBooking", roomsInCart);
         }
 
+        public async Task<IActionResult> MyBookings()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+                return RedirectToAction("Login", "Account");
+
+            // find the guest profile linked to this identity user
+            var guest = await _context.Guests
+                .FirstOrDefaultAsync(g => g.IdentityUserId == currentUser.Id);
+
+            if (guest == null)
+                return View(new List<Booking>()); // no bookings because no guest profile
+
+            // get only this user's bookings
+            var myBookings = await _context.Bookings
+                .Where(b => b.GuestID == guest.GuestID)
+                .Include(b => b.Room)
+                .Include(b => b.Receipt) // important
+                .ToListAsync();
+
+
+            return View("MyBookings", myBookings); // show MyBookings view
+
+        }
+
         // ConfirmBooking: create bookings + receipts and persist
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -376,6 +401,9 @@ namespace Hotel_Management_System.Controllers
             var guest = await _context.Guests.FirstOrDefaultAsync(g => g.Email == currentUser.Email);
             if (guest == null) return RedirectToAction("Index", "Home");
 
+            // Prepare email body
+            var emailBody = $"Dear {guest.Name},\n\nYour booking has been confirmed for the following rooms:\n\n";
+
             // For each room in cart -> re-check availability and insert booking + receipt
             foreach (var roomId in cart)
             {
@@ -417,42 +445,47 @@ namespace Hotel_Management_System.Controllers
 
                 room.IsAvailable = false;
                 _context.Rooms.Update(room);
+
+                // Add room details to email body
+                emailBody += $"Room Number: {room.RoomNumber}\n";
+                emailBody += $"Room Type: {room.RoomType}\n";
+                emailBody += $"Check-In: {booking.CheckInDate:yyyy-MM-dd}\n";
+                emailBody += $"Check-Out: {booking.CheckOutDate:yyyy-MM-dd}\n";
+                emailBody += $"Total Amount: {booking.Receipt.TotalAmount:C}\n\n";
             }
 
             await _context.SaveChangesAsync();
+
+            // Send a single email for all rooms
+            SendBookingConfirmationEmail(guest.Email, guest.Name, emailBody);
 
             HttpContext.Session.Remove("RoomCart");
             HttpContext.Session.Remove("CheckIn");
             HttpContext.Session.Remove("CheckOut");
 
-            return RedirectToAction("Index");
+            return RedirectToAction("MyBookings");
         }
+   
 
-
-        //for each user to view his bookings
-        public async Task<IActionResult> MyBookings()
+    public void SendBookingConfirmationEmail(string toEmail, string guestName, string emailBody)
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            if (currentUser == null)
-                return RedirectToAction("Login", "Account");
+            var fromEmail = "nussiba2004@gmail.com";      // your Gmail
+            var appPassword = "fannwsurtbgibplk";      // 16-character app password from Gmail
 
-            // find the guest profile linked to this identity user
-            var guest = await _context.Guests
-                .FirstOrDefaultAsync(g => g.IdentityUserId == currentUser.Id);
+            using (var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
+            {
+                client.Credentials = new System.Net.NetworkCredential(fromEmail, appPassword);
+                client.EnableSsl = true;
 
-            if (guest == null)
-                return View(new List<Booking>()); // no bookings because no guest profile
+                var mailMessage = new System.Net.Mail.MailMessage();
+                mailMessage.From = new System.Net.Mail.MailAddress(fromEmail, "Royal Stay Hotel");
+                mailMessage.To.Add(toEmail);
+                mailMessage.Subject = "Booking Confirmation";
+                mailMessage.Body = emailBody + "\nThank you for choosing our hotel!";
+                mailMessage.IsBodyHtml = false; // plain text
 
-            // get only this user's bookings
-            var myBookings = await _context.Bookings
-                .Where(b => b.GuestID == guest.GuestID)
-                .Include(b => b.Room)
-                .Include(b => b.Receipt) // important
-                .ToListAsync();
-
-
-            return View("MyBookings", myBookings); // show MyBookings view
-
+                client.Send(mailMessage);
+            }
         }
     }
 }

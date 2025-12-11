@@ -8,6 +8,12 @@
 
 <p>
     <a asp-action="Index" class="btn btn-secondary">Back to Rooms</a>
+
+    <a asp-action="DownloadRoomReport"
+       asp-route-id="@Model.RoomID"
+       class="btn btn-danger ms-2">
+        Download PDF
+    </a>
 </p>
 
 @if (Model.Bookings != null && Model.Bookings.Any())

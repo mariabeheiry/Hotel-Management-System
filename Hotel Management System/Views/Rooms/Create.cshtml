@@ -21,7 +21,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="RoomType" class="control-label"></label>
-                <input asp-for="RoomType" class="form-control" />
+                <select asp-for="RoomType" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.RoomTypes))">
+                    <option value="">-- Select Room Type --</option>
+                </select>
                 <span asp-validation-for="RoomType" class="text-danger"></span>
             </div>
             <div class="form-group">
