@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Hotel_Management_System.Models.Booking>
+
+@{
+    ViewData["Title"] = "My Bookings";
+}
+
+<h1>My Bookings</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Room</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Room.RoomNumber</td>
+                <td>@booking.CheckInDate.ToShortDateString()</td>
+                <td>@booking.CheckOutDate.ToShortDateString()</td>
+                <td>@booking.BookingStatus</td>
+                <td>
+                    <!-- View Details -->
+                    <a asp-action="Details" asp-route-id="@booking.BookingID"
+                       class="btn btn-info btn-sm">
+                        Details
+                    </a>
+
+                    <!-- Print Receipt -->
+                    @if (booking.Receipt != null)
+                    {
+                        <a asp-controller="Receipts" asp-action="Details"
+                           asp-route-id="@booking.Receipt.ReceiptID"
+                           target="_blank"
+                           class="btn btn-success btn-sm">
+                            Print Receipt
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary btn-sm" disabled>
+                            Print Receipt
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

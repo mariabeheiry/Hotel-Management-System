@@ -4,6 +4,10 @@
 
 <h2 class="mb-4">Revenue Report</h2>
 
+<div class="mb-3">
+    <button id="printButton" class="btn btn-success" onclick="window.print()">Print Revenue Report</button>
+</div>
+
 <div class="card p-4 shadow-sm">
 
     <h4 class="mt-3">Summary</h4>
@@ -58,3 +62,12 @@
     </table>
 
 </div>
+
+<!-- Correct way to include CSS inside Razor -->
+<style>
+    @media print {
+        #printButton {
+            display: none;
+        }
+    }
+</style>

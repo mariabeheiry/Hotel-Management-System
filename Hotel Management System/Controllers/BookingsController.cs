@@ -447,10 +447,12 @@ namespace Hotel_Management_System.Controllers
             var myBookings = await _context.Bookings
                 .Where(b => b.GuestID == guest.GuestID)
                 .Include(b => b.Room)
-                .Include(b => b.Receipt)
+                .Include(b => b.Receipt) // important
                 .ToListAsync();
 
-            return View("Index", myBookings);  // reuse Index view
+
+            return View("MyBookings", myBookings); // show MyBookings view
+
         }
     }
 }
