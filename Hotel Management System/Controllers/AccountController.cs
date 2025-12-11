@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hotel_Management_System.Models;
+using Hotel_Management_System.Data;
 using Microsoft.AspNetCore.Identity;
-using Hotel_Management_System.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Management_System.Controllers
 {
@@ -8,14 +10,19 @@ namespace Hotel_Management_System.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
         //UserManager handles => creating accounts,finding accounts, hashing passwords
         //SignInManager handles => logging users in, managing cookies, checking passwords.
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         // GET: /Account/Register
@@ -35,9 +42,25 @@ namespace Hotel_Management_System.Controllers
 
             if (result.Succeeded)
             {
+                // Add to Guest role
                 await _userManager.AddToRoleAsync(user, "Guest");
+
+                // Create linked Guest record
+                var guest = new Guest
+                {
+                    Name = model.Name,
+                    Phone = model.Phone,
+                    Email = model.Email,
+                    IdentityUserId = user.Id  // LINK to IdentityUser
+                };
+
+                // Save Guest to database
+                _context.Guests.Add(guest);
+                await _context.SaveChangesAsync();
+
+                // Sign in user
                 await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GuestHome", "Dashboard");
             }
 
             foreach (var error in result.Errors)

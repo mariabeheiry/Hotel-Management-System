@@ -1,23 +1,31 @@
 ﻿@model List<Hotel_Management_System.Models.Room>
 
+@{
+    ViewData["Title"] = "Search Available Rooms";
+}
+
 <h2>Search Available Rooms</h2>
 
-<form method="get" asp-action="Search">
-    <div class="row mb-4">
-        <div class="col-md-4">
+<form method="get" asp-action="Search" class="mb-3">
+    <div class="row g-2">
+        <div class="col-md-3">
             <label>Check-In</label>
-            <input type="date" name="checkIn" class="form-control" value="@ViewBag.CheckIn?.ToString("yyyy-MM-dd")" />
+            <input type="date" name="checkIn" class="form-control" value="@ViewBag.CheckIn?.ToString("yyyy-MM-dd")" required />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label>Check-Out</label>
-            <input type="date" name="checkOut" class="form-control" value="@ViewBag.CheckOut?.ToString("yyyy-MM-dd")" />
+            <input type="date" name="checkOut" class="form-control" value="@ViewBag.CheckOut?.ToString("yyyy-MM-dd")" required />
         </div>
-        <div class="col-md-4 pt-4">
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </div>
 </form>
 
+@if (TempData["SearchError"] != null)
+{
+    <div class="alert alert-danger">@TempData["SearchError"]</div>
+}
 
 @if (TempData["CartMessage"] != null)
 {
@@ -28,46 +36,53 @@
     <script>
         setTimeout(function() {
             var messageDiv = document.getElementById("cartMessage");
-            if (messageDiv) {
-                messageDiv.style.display = "none";
-            }
-        }, 3000);
+            if (messageDiv) { messageDiv.style.display = "none"; }
+        }, 3500);
     </script>
 }
 
-@if (!Model.Any())
+@if (ViewBag.CheckIn == null || ViewBag.CheckOut == null)
 {
-    <p>No rooms available for the selected dates.</p>
+    <div class="alert alert-info">
+        Enter check-in and check-out dates and press <strong>Search</strong> to view available rooms.
+    </div>
 }
 else
 {
-    <div class="row">
-        @foreach (var room in Model)
-        {
-            <div class="col-md-4 mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Room @room.RoomNumber</h5>
-                        <p>Type: @room.RoomType</p>
-                        <p>Price: @room.Price EGP</p>
+    if (!Model.Any())
+    {
+        <p>No rooms available for the selected dates.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var room in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Room @room.RoomNumber</h5>
+                            <p class="mb-1">Type: @room.RoomType</p>
+                            <p class="mb-1">Price: @room.Price.ToString("F2") EGP/night</p>
 
-                        <form method="post" asp-action="AddRoomToBooking">
-                            <input type="hidden" name="roomId" value="@room.RoomID" />
-                            <input type="hidden" name="checkIn" value="@ViewBag.CheckIn" />
-                            <input type="hidden" name="checkOut" value="@ViewBag.CheckOut" />
-                            <button class="btn btn-success">Book This Room</button>
-                        </form>
+                            <form method="post" asp-action="AddRoomToBooking" class="mt-auto">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="roomId" value="@room.RoomID" />
+                                <input type="hidden" name="checkIn" value="@ViewBag.CheckIn.ToString("yyyy-MM-dd")" />
+                                <input type="hidden" name="checkOut" value="@ViewBag.CheckOut.ToString("yyyy-MM-dd")" />
+                                <button class="btn btn-success w-100">Book This Room</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="mt-4 text-end">
-        <form method="post" asp-action="ConfirmBookingPage" asp-controller="Bookings">
-            <button type="submit" class="btn btn-primary btn-lg">
-                Confirm Booking
-            </button>
-        </form>
-    </div>
+        <div class="mt-4 text-end">
+            <form method="post" asp-action="ConfirmBookingPage" asp-controller="Bookings">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
+            </form>
+        </div>
+    }
 }

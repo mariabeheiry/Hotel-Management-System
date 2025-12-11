@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace Hotel_Management_System.Controllers
 {
@@ -22,7 +19,7 @@ namespace Hotel_Management_System.Controllers
             _userManager = userManager;
         }
 
-        // GET: Bookings 
+        // GET: Bookings (list)
         public async Task<IActionResult> Index()
         {
             var bookings = _context.Bookings
@@ -33,7 +30,7 @@ namespace Hotel_Management_System.Controllers
             return View(await bookings.ToListAsync());
         }
 
-        // GET: Bookings/Details/5
+        // Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -49,7 +46,7 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Create
+        // Single create (fallback)
         public IActionResult Create()
         {
             ViewData["RoomID"] = new SelectList(_context.Rooms.Where(r => r.IsAvailable), "RoomID", "RoomNumber");
@@ -57,7 +54,6 @@ namespace Hotel_Management_System.Controllers
             return View();
         }
 
-        // POST: Bookings/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookingID,GuestID,RoomID,CheckInDate,CheckOutDate")] Booking booking)
@@ -77,9 +73,10 @@ namespace Hotel_Management_System.Controllers
             if (ModelState.IsValid)
             {
                 var room = await _context.Rooms.FindAsync(booking.RoomID);
+                if (room == null) ModelState.AddModelError("", "Selected room not found.");
 
                 int nights = (int)(booking.CheckOutDate - booking.CheckInDate).TotalDays;
-                decimal amount = room.Price * nights;
+                decimal amount = (room != null) ? room.Price * nights : 0m;
 
                 var receipt = new Receipt
                 {
@@ -90,7 +87,7 @@ namespace Hotel_Management_System.Controllers
                 booking.Receipt = receipt;
                 _context.Add(booking);
 
-                room.IsAvailable = false;
+                if (room != null) room.IsAvailable = false;
 
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -102,7 +99,7 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Edit/5
+        // Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -116,7 +113,6 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // POST: Bookings/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Booking booking)
@@ -130,6 +126,7 @@ namespace Hotel_Management_System.Controllers
                 return View(booking);
             }
 
+            // Update Completed status if passed
             if (DateTime.Now.Date >= booking.CheckOutDate.Date &&
                 booking.BookingStatus != BookingStatus.Cancelled)
             {
@@ -154,7 +151,7 @@ namespace Hotel_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Bookings/Delete/5
+        // Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -170,7 +167,6 @@ namespace Hotel_Management_System.Controllers
             return View(booking);
         }
 
-        // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -181,73 +177,135 @@ namespace Hotel_Management_System.Controllers
 
             if (booking == null) return NotFound();
 
-            // Make room available again
             var room = await _context.Rooms.FindAsync(booking.RoomID);
             if (room != null)
             {
+                // mark available; Search will recompute as well
                 room.IsAvailable = true;
             }
 
-            // Delete receipt if exists
             if (booking.Receipt != null)
             {
                 _context.Receipts.Remove(booking.Receipt);
             }
 
-            // Delete booking
             _context.Bookings.Remove(booking);
-
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
-
+        // SEARCH: recompute availability & show only when dates provided
         public async Task<IActionResult> Search(DateTime? checkIn, DateTime? checkOut)
         {
-            var rooms = await _context.Rooms
+            var today = DateTime.Now.Date;
+
+            // load rooms + bookings
+            var allRooms = await _context.Rooms
                 .Include(r => r.Bookings)
                 .ToListAsync();
 
-            // Filtering by date window
-            if (checkIn != null && checkOut != null)
+            // update booking statuses (complete outdated bookings) and recompute room availability
+            bool changed = false;
+            foreach (var room in allRooms)
             {
-                rooms = rooms
-                    .Where(r => !r.Bookings.Any(b =>
-                        (checkIn < b.CheckOutDate && checkOut > b.CheckInDate) &&
-                        b.BookingStatus == BookingStatus.Confirmed))
-                    .ToList();
+                // update booking statuses where checkout has passed and not cancelled/completed yet
+                foreach (var b in room.Bookings)
+                {
+                    if (b.BookingStatus == BookingStatus.Confirmed && b.CheckOutDate.Date < today)
+                    {
+                        b.BookingStatus = BookingStatus.Completed;
+                        _context.Bookings.Update(b);
+                        changed = true;
+                    }
+                }
+
+                // A room is available if there is NO confirmed booking whose CheckOutDate >= today
+                var hasActiveConfirmed = room.Bookings
+                    .Any(b => b.BookingStatus == BookingStatus.Confirmed && b.CheckOutDate.Date >= today);
+
+                var newAvailability = !hasActiveConfirmed;
+                if (room.IsAvailable != newAvailability)
+                {
+                    room.IsAvailable = newAvailability;
+                    _context.Rooms.Update(room);
+                    changed = true;
+                }
             }
+
+            if (changed) await _context.SaveChangesAsync();
+
+            // If dates not supplied => show nothing and prompt user
+            if (checkIn == null || checkOut == null)
+            {
+                ViewBag.CheckIn = null;
+                ViewBag.CheckOut = null;
+                return View(new List<Room>());
+            }
+
+            // validate date ordering
+            if (checkOut <= checkIn)
+            {
+                TempData["SearchError"] = "Check-out date must be after check-in date.";
+                ViewBag.CheckIn = checkIn;
+                ViewBag.CheckOut = checkOut;
+                return View(new List<Room>());
+            }
+
+            // Filter: room is available for requested range if it has no confirmed booking overlapping requested window
+            var roomsAvailable = allRooms
+                .Where(r => !r.Bookings.Any(b =>
+                    b.BookingStatus == BookingStatus.Confirmed &&
+                    (checkIn < b.CheckOutDate && checkOut > b.CheckInDate)
+                ))
+                .OrderBy(r => r.RoomNumber)
+                .ToList();
 
             ViewBag.CheckIn = checkIn;
             ViewBag.CheckOut = checkOut;
 
-            return View(rooms);
+            return View(roomsAvailable);
         }
 
+        // Add room to session cart (requires dates)
         [HttpPost]
-        public async Task<IActionResult> AddRoomToBooking(int roomId, DateTime checkIn, DateTime checkOut)
+        [ValidateAntiForgeryToken]
+        public IActionResult AddRoomToBooking(int roomId, DateTime? checkIn, DateTime? checkOut)
         {
+            // enforce presence of dates
+            if (checkIn == null || checkOut == null)
+            {
+                TempData["CartMessage"] = "Please select check-in and check-out dates and press Search first.";
+                return RedirectToAction("Search");
+            }
+
+            if (checkOut <= checkIn)
+            {
+                TempData["CartMessage"] = "Invalid dates: Check-out must be after check-in.";
+                return RedirectToAction("Search", new { checkIn = checkIn?.ToString("yyyy-MM-dd"), checkOut = checkOut?.ToString("yyyy-MM-dd") });
+            }
+
             var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
 
             if (!cart.Contains(roomId))
                 cart.Add(roomId);
 
             HttpContext.Session.SetObject("RoomCart", cart);
-            HttpContext.Session.SetString("CheckIn", checkIn.ToString());
-            HttpContext.Session.SetString("CheckOut", checkOut.ToString());
+            HttpContext.Session.SetString("CheckIn", checkIn.Value.ToString("yyyy-MM-dd"));
+            HttpContext.Session.SetString("CheckOut", checkOut.Value.ToString("yyyy-MM-dd"));
 
             TempData["CartMessage"] = "Room added to cart successfully!";
 
             return RedirectToAction("Search", new
             {
-                checkIn = checkIn.ToString("yyyy-MM-dd"),
-                checkOut = checkOut.ToString("yyyy-MM-dd")
+                checkIn = checkIn.Value.ToString("yyyy-MM-dd"),
+                checkOut = checkOut.Value.ToString("yyyy-MM-dd")
             });
         }
 
-
+        // Remove room from cart
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveFromCart(int roomId)
         {
             var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
@@ -260,50 +318,10 @@ namespace Hotel_Management_System.Controllers
 
             return View("ConfirmBooking", roomsInCart);
         }
+
+        // Show confirm booking page (POST from Search => uses session)
         [HttpPost]
-        public async Task<IActionResult> ConfirmBooking()
-        {
-            var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
-            if (!cart.Any()) return RedirectToAction("Search");
-
-            var checkIn = DateTime.Parse(HttpContext.Session.GetString("CheckIn") ?? "");
-            var checkOut = DateTime.Parse(HttpContext.Session.GetString("CheckOut") ?? "");
-
-            var currentUser = await _userManager.GetUserAsync(User);
-            if (currentUser == null) return RedirectToAction("Login", "Account");
-
-            var guest = await _context.Guests.FirstOrDefaultAsync(g => g.Email == currentUser.Email);
-            if (guest == null) return RedirectToAction("Index", "Home");
-
-            foreach (var roomId in cart)
-            {
-                var room = await _context.Rooms.FindAsync(roomId);
-                if (room == null || !room.IsAvailable) continue; // skip unavailable rooms
-
-                var booking = new Booking
-                {
-                    RoomID = roomId,
-                    GuestID = guest.GuestID,
-                    CheckInDate = checkIn,
-                    CheckOutDate = checkOut,
-                    BookingStatus = BookingStatus.Confirmed
-                };
-                _context.Bookings.Add(booking);
-
-                // Mark room as unavailable
-                room.IsAvailable = false;
-            }
-
-            await _context.SaveChangesAsync();
-
-            HttpContext.Session.Remove("RoomCart");
-            HttpContext.Session.Remove("CheckIn");
-            HttpContext.Session.Remove("CheckOut");
-
-            return RedirectToAction("Index"); // Redirect to user's bookings page
-        }
-
-        // GET: ConfirmBooking page
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmBookingPage()
         {
             var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
@@ -315,6 +333,124 @@ namespace Hotel_Management_System.Controllers
             return View("ConfirmBooking", roomsInCart);
         }
 
+        // ConfirmBooking: create bookings + receipts and persist
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmBooking()
+        {
+            var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
+            if (!cart.Any()) return RedirectToAction("Search");
 
+            var checkInString = HttpContext.Session.GetString("CheckIn");
+            var checkOutString = HttpContext.Session.GetString("CheckOut");
+
+            if (!ModelState.IsValid)
+            {
+                var errors = string.Join("; ",
+                    ModelState.Values
+                        .SelectMany(v => v.Errors)
+                        .Select(e => e.ErrorMessage));
+
+                TempData["CartMessage"] = "ModelState invalid: " + errors;
+                return RedirectToAction("ConfirmBookingPage");
+            }
+
+            if (string.IsNullOrEmpty(checkInString) || string.IsNullOrEmpty(checkOutString))
+            {
+                TempData["CartMessage"] = "Session dates missing. Please search again.";
+                return RedirectToAction("Search");
+            }
+
+            var checkIn = DateTime.Parse(checkInString);
+            var checkOut = DateTime.Parse(checkOutString);
+
+            if (checkOut <= checkIn)
+            {
+                TempData["CartMessage"] = "Invalid dates stored in session. Please search again.";
+                return RedirectToAction("Search");
+            }
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null) return RedirectToAction("Login", "Account");
+
+            var guest = await _context.Guests.FirstOrDefaultAsync(g => g.Email == currentUser.Email);
+            if (guest == null) return RedirectToAction("Index", "Home");
+
+            // For each room in cart -> re-check availability and insert booking + receipt
+            foreach (var roomId in cart)
+            {
+                var room = await _context.Rooms
+                    .Include(r => r.Bookings)
+                    .FirstOrDefaultAsync(r => r.RoomID == roomId);
+
+                if (room == null) continue;
+
+                // Check for overlapping confirmed bookings
+                var hasConflict = room.Bookings.Any(b =>
+                    b.BookingStatus == BookingStatus.Confirmed &&
+                    (checkIn < b.CheckOutDate && checkOut > b.CheckInDate)
+                );
+                if (hasConflict) continue; // skip this room — it was taken in meantime
+
+                var booking = new Booking
+                {
+                    RoomID = roomId,
+                    GuestID = guest.GuestID,
+                    CheckInDate = checkIn,
+                    CheckOutDate = checkOut,
+                    BookingStatus = BookingStatus.Confirmed
+                };
+
+                int nights = (int)(checkOut - checkIn).TotalDays;
+                if (nights < 1) nights = 1;
+                decimal amount = room.Price * nights;
+
+                var receipt = new Receipt
+                {
+                    Booking = booking,
+                    TotalAmount = amount
+                };
+
+                booking.Receipt = receipt;
+
+                _context.Bookings.Add(booking);
+
+                room.IsAvailable = false;
+                _context.Rooms.Update(room);
+            }
+
+            await _context.SaveChangesAsync();
+
+            HttpContext.Session.Remove("RoomCart");
+            HttpContext.Session.Remove("CheckIn");
+            HttpContext.Session.Remove("CheckOut");
+
+            return RedirectToAction("Index");
+        }
+
+
+        //for each user to view his bookings
+        public async Task<IActionResult> MyBookings()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+                return RedirectToAction("Login", "Account");
+
+            // find the guest profile linked to this identity user
+            var guest = await _context.Guests
+                .FirstOrDefaultAsync(g => g.IdentityUserId == currentUser.Id);
+
+            if (guest == null)
+                return View(new List<Booking>()); // no bookings because no guest profile
+
+            // get only this user's bookings
+            var myBookings = await _context.Bookings
+                .Where(b => b.GuestID == guest.GuestID)
+                .Include(b => b.Room)
+                .Include(b => b.Receipt)
+                .ToListAsync();
+
+            return View("Index", myBookings);  // reuse Index view
+        }
     }
 }
