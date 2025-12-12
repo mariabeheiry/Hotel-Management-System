@@ -4,6 +4,97 @@
     ViewData["Title"] = "Search Available Rooms";
 }
 
+<style>
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h2 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    /* Form styling */
+    form.mb-3 .form-control {
+        border-radius: 12px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+    }
+
+    form.mb-3 button {
+        border-radius: 12px;
+        padding: 10px 18px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #0061ff, #4bcffa);
+        border: none;
+        color: white;
+        transition: background 0.25s ease;
+    }
+
+        form.mb-3 button:hover {
+            background: linear-gradient(135deg, #0050d4, #3bc0e6);
+        }
+
+    /* Alert messages */
+    .alert {
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        font-size: 0.95rem;
+    }
+
+    /* Room cards */
+    .card {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(0,0,0,0.16);
+        }
+
+    .card-body h5 {
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    .card-body p {
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .btn-success {
+        border-radius: 12px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #28a745, #5ed38f);
+        border: none;
+        transition: background 0.25s ease;
+    }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #218838, #4dc47e);
+        }
+
+    /* Confirm Booking button */
+    .btn-lg {
+        border-radius: 12px;
+        padding: 12px 24px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #0061ff, #4bcffa);
+        border: none;
+        color: white;
+    }
+
+        .btn-lg:hover {
+            background: linear-gradient(135deg, #0050d4, #3bc0e6);
+        }
+
+</style>
+
 <h2>Search Available Rooms</h2>
 
 <form method="get" asp-action="Search" class="mb-3">
@@ -17,7 +108,7 @@
             <input type="date" name="checkOut" class="form-control" value="@ViewBag.CheckOut?.ToString("yyyy-MM-dd")" required />
         </div>
         <div class="col-md-3 align-self-end">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary w-100">Search</button>
         </div>
     </div>
 </form>
@@ -43,7 +134,7 @@
 
 @if (ViewBag.CheckIn == null || ViewBag.CheckOut == null)
 {
-    <div class="alert alert-info">
+    <div class="alert alert-info text-center">
         Enter check-in and check-out dates and press <strong>Search</strong> to view available rooms.
     </div>
 }
@@ -51,7 +142,7 @@ else
 {
     if (!Model.Any())
     {
-        <p>No rooms available for the selected dates.</p>
+        <p class="text-center mt-3">No rooms available for the selected dates.</p>
     }
     else
     {
@@ -81,7 +172,7 @@ else
         <div class="mt-4 text-end">
             <form method="post" asp-action="ConfirmBookingPage" asp-controller="Bookings">
                 @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
+                <button type="submit" class="btn btn-lg">Confirm Booking</button>
             </form>
         </div>
     }

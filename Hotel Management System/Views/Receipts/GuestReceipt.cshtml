@@ -5,6 +5,112 @@
     var numberOfDays = (Model.Booking.CheckOutDate - Model.Booking.CheckInDate).Days;
 }
 
+<style>
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    h3 {
+        font-weight: 700;
+        color: #2c3e50;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    /* Receipt tables */
+    table {
+        width: 45%; /* smaller table */
+        margin: 25px auto; /* center */
+        background: #ffffffcc; /* soft white with transparency */
+        border-radius: 14px;
+        border: 1px solid #e6e6e6; /* very light border */
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+        table th, table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+        }
+
+        table th {
+            background: #fafafa; 
+            color: #555; 
+            font-weight: 600;
+        }
+
+        table tr:last-child td {
+            border-bottom: none; 
+        }
+
+    h1, h4 {
+        text-align: center;
+        color: #444;
+        font-weight: 600;
+    }
+
+
+    th {
+        background: linear-gradient(135deg, #1D9DC4, #4bcffa);
+        color: white;
+        padding: 12px;
+        font-weight: 700;
+        width: 30%;
+    }
+
+    td {
+        padding: 12px;
+        font-size: 1rem;
+        color: #2c3e50;
+        background: white;
+    }
+
+    /* Total amount */
+    .fs-4.fw-bold {
+        padding: 15px 20px;
+        background: white;
+        display: inline-block;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        font-size: 1.5rem !important;
+        color: #2c3e50;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 18px;
+        font-weight: 600;
+        border-radius: 12px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #1D9DC4, #4bcffa);
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1D9DC4, #3bc0e6);
+        }
+
+    .btn-success {
+        background: linear-gradient(135deg, #28a745, #5ed38f);
+        border: none;
+    }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #218838, #4dc47e);
+        }
+
+  
+      
+</style>
+
 <h1>Guest Receipt</h1>
 
 <h3>Guest Information</h3>

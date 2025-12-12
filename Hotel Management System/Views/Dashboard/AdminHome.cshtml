@@ -2,6 +2,58 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
+<style>
+    /* Background */
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h2 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    /* Card enhancements */
+    .card {
+        border-radius: 16px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #0061ff;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        color: #34495e;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #0061ff, #4bcffa);
+        border: none;
+        font-weight: 600;
+        transition: background 0.25s ease;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0052d0, #3bc0e6);
+        }
+</style>
+
 <h2 class="mb-4">Admin Dashboard</h2>
 
 <div class="row">
@@ -41,21 +93,4 @@
                     View total revenue for a selected date range.
                 </p>
                 <a asp-controller="Revenue" asp-action="Revenue" class="btn btn-primary">Open</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Manage Guests -->
-    <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Manage Guests</h5>
-                <p class="card-text">
-                    Update, delete, and view all guest accounts.
-                </p>
-                <a asp-controller="Guests" asp-action="Index" class="btn btn-primary">Open</a>
-            </div>
-        </div>
-    </div>
-
-</div>
+</d

@@ -8,75 +8,113 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Royal Stay Hotel</title>
-    <script type="importmap"></script>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Hotel_Management_System.styles.css" asp-append-version="true" />
+
+    <style>
+        /* Glass header */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(6px);
+        }
+
+        /* Navbar link styling */
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #0d6efd; /* bootstrap primary */
+            }
+
+        /* Buttons styling */
+        .navbar .btn {
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+            .navbar .btn:hover {
+                transform: translateY(-2px);
+            }
+
+        body {
+            background: #f8f9fa; /* light background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Royal Stay Hotel</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg glass-header shadow-sm py-3">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand fw-bold fs-4 text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                    Royal Stay Hotel
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
 
+                    <!-- LEFT SIDE LINKS -->
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark fw-semibold" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-
-                        @* ---------------------- ROLE-BASED LINKS ---------------------- *@
 
                         @if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="AdminHome">
+                                    <a class="nav-link text-primary fw-semibold" asp-controller="Dashboard" asp-action="AdminHome">
                                         Admin Panel
                                     </a>
                                 </li>
                             }
-
                             if (User.IsInRole("Guest"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="GuestHome">
+                                    <a class="nav-link text-success fw-semibold" asp-controller="Dashboard" asp-action="GuestHome">
                                         My Dashboard
                                     </a>
                                 </li>
                             }
                         }
-
                     </ul>
 
-                    @* ---------------------- AUTH LINKS (RIGHT SIDE) ---------------------- *@
-                    <ul class="navbar-nav">
+                    <!-- RIGHT SIDE AUTH LINKS -->
+                    <ul class="navbar-nav ms-auto">
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
-                                    <button type="submit" class="btn btn-link nav-link text-dark">
-                                        Logout
-                                    </button>
+                                    <button type="submit" class="btn btn-outline-dark px-3 rounded-pill">Logout</button>
                                     @Html.AntiForgeryToken()
                                 </form>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary px-3 rounded-pill" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="btn btn-primary px-3 rounded-pill text-white fw-semibold" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
                         }
                     </ul>
@@ -86,18 +124,21 @@
         </nav>
     </header>
 
-    <div class="container">
+    <!-- Main content -->
+    <div class="container mt-4">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <!-- Footer -->
+    <footer class="border-top footer text-muted py-3">
+        <div class="container text-center">
             &copy; 2025 - Royal Stay Hotel
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

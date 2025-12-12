@@ -4,44 +4,105 @@
     ViewData["Title"] = "Details";
 }
 
+<style>
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    h4 {
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    /* Details container */
+    dl {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 25px 30px;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        margin-bottom: 30px;
+        border-left: 6px solid #0061ff;
+    }
+
+    dt {
+        font-weight: 700;
+        color: #34495e;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    dd {
+        color: #2c3e50;
+        margin-bottom: 18px;
+        font-size: 0.97rem;
+    }
+
+    /* Button */
+    a {
+        display: inline-block;
+        padding: 10px 18px;
+        font-weight: 600;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #0061ff, #4bcffa);
+        transition: background 0.25s ease;
+    }
+
+        a:hover {
+            background: linear-gradient(135deg, #0052d0, #3bc0e6);
+        }
+</style>
+
 <h1>Details</h1>
 
 <div>
     <h4>Booking</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Guest)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Guest.Name)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Room)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Room.RoomNumber)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CheckInDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CheckInDate)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CheckOutDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CheckOutDate)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookingStatus)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.BookingStatus)
         </dd>
     </dl>
 </div>
+
 <div>
     <a asp-action="MyBookings">View Your Bookings</a>
 </div>

@@ -35,3 +35,22 @@ body {
         display: none;
     }
 }
+
+@media print {
+    .btn, nav, footer {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    table {
+        box-shadow: none !important;
+    }
+
+    th {
+        background: #0061ff !important;
+        -webkit-print-color-adjust: exact;
+    }
+}

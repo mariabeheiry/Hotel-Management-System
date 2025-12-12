@@ -4,6 +4,90 @@
     ViewData["Title"] = "My Bookings";
 }
 
+<style>
+    /* Page styling */
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    /* Table container glass effect */
+    table {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 16px !important;
+        overflow: hidden;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Table header */
+    thead tr {
+        background: linear-gradient(135deg, #0061ff, #4bcffa);
+        color: white;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    th {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    /* Table rows */
+    tbody tr {
+        transition: background 0.25s ease, transform 0.15s ease;
+    }
+
+        tbody tr:hover {
+            background: rgba(0, 0, 0, 0.04);
+            transform: translateX(4px);
+        }
+
+    td {
+        padding: 14px;
+        vertical-align: middle;
+        font-size: 0.95rem;
+        color: #2c3e50;
+    }
+
+    /* Buttons inside table */
+    .btn-sm {
+        padding: 6px 12px;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+
+    .btn-info {
+        background: linear-gradient(135deg, #17a2b8, #5bc0de);
+        border: none;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: linear-gradient(135deg, #138496, #46afcc);
+        }
+
+    .btn-success {
+        background: linear-gradient(135deg, #28a745, #5ed38f);
+        border: none;
+    }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #218838, #4dc47e);
+        }
+
+    .btn-secondary {
+        background: #b2bec3;
+        border: none;
+    }
+
+</style>
+
+
 <h1>My Bookings</h1>
 
 <table class="table table-striped table-bordered table-hover">
@@ -25,13 +109,11 @@
                 <td>@booking.CheckOutDate.ToShortDateString()</td>
                 <td>@booking.BookingStatus</td>
                 <td>
-                    <!-- View Details -->
                     <a asp-action="Details" asp-route-id="@booking.BookingID"
                        class="btn btn-info btn-sm">
                         Details
                     </a>
 
-                    <!-- Print Receipt -->
                     @if (booking.Receipt != null)
                     {
                         <a asp-controller="Receipts" asp-action="Details"
