@@ -3,14 +3,12 @@ using Hotel_Management_System.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hotel_Management_System.Controllers
 {
-    
     public class GuestsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -84,10 +82,6 @@ namespace Hotel_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GuestID,Name,Phone,Email")] Guest guest)
         {
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-            }
             if (ModelState.IsValid)
             {
                 _context.Add(guest);
@@ -152,12 +146,28 @@ namespace Hotel_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var guest = await _context.Guests.FindAsync(id);
+            var guest = await _context.Guests
+                .FirstOrDefaultAsync(g => g.GuestID == id);
+
             if (guest != null)
             {
+                // Delete linked Identity user
+                if (!string.IsNullOrEmpty(guest.IdentityUserId))
+                {
+                    var identityUser = await _context.Users
+                        .FirstOrDefaultAsync(u => u.Id == guest.IdentityUserId);
+
+                    if (identityUser != null)
+                    {
+                        _context.Users.Remove(identityUser);
+                    }
+                }
+
+                // Delete Guest record
                 _context.Guests.Remove(guest);
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Index));
         }
 

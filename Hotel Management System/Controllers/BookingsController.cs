@@ -285,6 +285,19 @@ namespace Hotel_Management_System.Controllers
                 return RedirectToAction("Search", new { checkIn = checkIn?.ToString("yyyy-MM-dd"), checkOut = checkOut?.ToString("yyyy-MM-dd") });
             }
 
+            if (checkIn.Value.Date < DateTime.Today)
+            {
+                TempData["CartMessage"] = "Check-in date cannot be in the past.";
+                return RedirectToAction("Search");
+            }
+
+            if (checkOut.Value.Date <= checkIn.Value.Date)
+            {
+                TempData["CartMessage"] = "Check-out must be after check-in date.";
+                return RedirectToAction("Search");
+            }
+
+
             var cart = HttpContext.Session.GetObject<List<int>>("RoomCart") ?? new List<int>();
 
             if (!cart.Contains(roomId))
@@ -386,12 +399,25 @@ namespace Hotel_Management_System.Controllers
                 return RedirectToAction("Search");
             }
 
+
             var checkIn = DateTime.Parse(checkInString);
             var checkOut = DateTime.Parse(checkOutString);
 
             if (checkOut <= checkIn)
             {
                 TempData["CartMessage"] = "Invalid dates stored in session. Please search again.";
+                return RedirectToAction("Search");
+            }
+
+            if (checkIn.Date < DateTime.Today)
+            {
+                TempData["CartMessage"] = "Cannot confirm booking: check-in date is in the past.";
+                return RedirectToAction("Search");
+            }
+
+            if (checkOut <= checkIn)
+            {
+                TempData["CartMessage"] = "Cannot confirm booking: invalid check-out date.";
                 return RedirectToAction("Search");
             }
 
@@ -469,8 +495,8 @@ namespace Hotel_Management_System.Controllers
 
     public void SendBookingConfirmationEmail(string toEmail, string guestName, string emailBody)
         {
-            var fromEmail = "nussiba2004@gmail.com";      // your Gmail
-            var appPassword = "fannwsurtbgibplk";      // 16-character app password from Gmail
+            var fromEmail = "maria.alaa.beheiry.6207@gmail.com";      // your Gmail
+            var appPassword = "zdbqvpogdkvmtkej";      // 16-character app password from Gmail
 
             using (var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
             {

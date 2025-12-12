@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Revenue Report";
+}
+
+<h2 class="mb-4">Revenue Report</h2>
+
+<div class="mb-3">
+    <a id="printButton" class="btn btn-success" target="_blank">Print Revenue Report</a>
+</div>
+
+<div class="card p-4 shadow-sm">
+
+    <h4 class="mt-3">Filter Revenue</h4>
+
+    <form id="filterForm" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label class="form-label">Select Month</label>
+            <select name="month" class="form-select">
+                <option value="">All Months</option>
+                @for (int m = 1; m <= 12; m++)
+                {
+                    <option value="@m" selected="@(ViewBag.SelectedMonth == m)">
+                        @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m)
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Select Year</label>
+            <select name="year" class="form-select">
+                <option value="">All Years</option>
+                @foreach (var yr in ViewBag.Years ?? new List<int>())
+                {
+                    <option value="@yr" selected="@(ViewBag.SelectedYear == yr)">
+                        @yr
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <div id="reportContent">
+        @await Html.PartialAsync("RevenuePartial")
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // AJAX filtering
+            $('#filterForm').submit(function (e) {
+                e.preventDefault();
+                var month = $(this).find('select[name="month"]').val();
+                var year = $(this).find('select[name="year"]').val();
+
+                $.ajax({
+                    url: '@Url.Action("RevenuePartial", "Revenue")',
+                    type: 'get',
+                    data: { month: month, year: year },
+                    success: function (result) {
+                        $('#reportContent').html(result);
+                    },
+                    error: function () {
+                        alert('Error loading revenue data.');
+                    }
+                });
+            });
+
+            // Print PDF
+            $('#printButton').click(function () {
+                var month = $('#filterForm').find('select[name="month"]').val();
+                var year = $('#filterForm').find('select[name="year"]').val();
+                var url = '@Url.Action("RevenuePdf", "Revenue")' + '?month=' + month + '&year=' + year;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+}

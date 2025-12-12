@@ -28,11 +28,13 @@ namespace Hotel_Management_System.Models
 
         [Required(ErrorMessage = "Check-in date is required")]
         [DataType(DataType.Date)]
+        [DateNotInPast(ErrorMessage = "Check-in date cannot be earlier than today.")]
         public DateTime CheckInDate { get; set; }
 
         [Required(ErrorMessage = "Check-out date is required")]
         [DataType(DataType.Date)]
         [DateGreaterThan("CheckInDate", ErrorMessage = "Check-out must be after check-in")]
+        [DateNotInPast(ErrorMessage = "Check-out date cannot be earlier than today.")]
         public DateTime CheckOutDate { get; set; }
 
         [Required]

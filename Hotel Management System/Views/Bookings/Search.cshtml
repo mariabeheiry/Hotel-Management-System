@@ -63,7 +63,7 @@ else
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Room @room.RoomNumber</h5>
                             <p class="mb-1">Type: @room.RoomType</p>
-                            <p class="mb-1">Price: @room.Price.ToString("F2") EGP/night</p>
+                            <p class="mb-1">Price: @room.Price.ToString("F2") USD/night</p>
 
                             <form method="post" asp-action="AddRoomToBooking" class="mt-auto">
                                 @Html.AntiForgeryToken()
