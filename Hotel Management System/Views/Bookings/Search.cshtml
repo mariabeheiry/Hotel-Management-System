@@ -147,10 +147,29 @@ else
     else
     {
         <div class="row">
+            @{
+                var roomTypeImages = new Dictionary<string, string>
+        {
+        { "Single", "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg" },
+        { "Double", "https://images.pexels.com/photos/5998055/pexels-photo-5998055.jpeg" },
+        { "Suite",  "https://images.pexels.com/photos/18801079/pexels-photo-18801079.jpeg" }
+        };
+
+                var defaultImage = "https://via.placeholder.com/400x250?text=Room";
+            }
+
             @foreach (var room in Model)
             {
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
+
+                        <img src="@(roomTypeImages.ContainsKey(room.RoomType)
+                                                     ? roomTypeImages[room.RoomType]
+                                                     : defaultImage)"
+                             class="card-img-top"
+                             alt="Room Image"
+                             style="height:220px; object-fit:cover;" />
+
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Room @room.RoomNumber</h5>
                             <p class="mb-1">Type: @room.RoomType</p>
@@ -167,6 +186,9 @@ else
                     </div>
                 </div>
             }
+
+
+
         </div>
 
         <div class="mt-4 text-end">
