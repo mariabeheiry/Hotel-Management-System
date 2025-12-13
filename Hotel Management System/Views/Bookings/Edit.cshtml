@@ -4,36 +4,106 @@
     ViewData["Title"] = "Edit";
 }
 
+<style>
+    body {
+        background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+    }
+
+    h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    h4 {
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 20px;
+    }
+
+    .edit-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px 35px;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        border-left: 6px solid #0061ff; /* blue accent for edit */
+    }
+
+    label {
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 6px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 8px 12px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #0061ff, #0047cc);
+        border: none;
+        font-weight: 600;
+        padding: 8px 22px;
+        border-radius: 10px;
+        transition: background 0.25s ease;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0047cc, #003399);
+        }
+
+    a {
+        display: inline-block;
+        margin-left: 10px;
+        font-weight: 600;
+        color: #34495e;
+        text-decoration: none;
+        transition: color 0.25s ease;
+    }
+
+        a:hover {
+            color: #0061ff;
+        }
+</style>
+
 <h1>Edit</h1>
 
 <h4>Booking</h4>
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-6">
+        <form asp-action="Edit" class="edit-card">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
             <input type="hidden" asp-for="BookingID" />
-            <div class="form-group">
-                <label asp-for="GuestID" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="GuestID"></label>
                 <select asp-for="GuestID" class="form-control" asp-items="ViewBag.GuestID"></select>
                 <span asp-validation-for="GuestID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="RoomID" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="RoomID"></label>
                 <select asp-for="RoomID" class="form-control" asp-items="ViewBag.RoomID"></select>
                 <span asp-validation-for="RoomID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CheckInDate" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="CheckInDate"></label>
                 <input asp-for="CheckInDate" class="form-control" />
                 <span asp-validation-for="CheckInDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CheckOutDate" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="CheckOutDate"></label>
                 <input asp-for="CheckOutDate" class="form-control" />
                 <span asp-validation-for="CheckOutDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-4">
                 <label asp-for="BookingStatus"></label>
                 <select asp-for="BookingStatus"
                         class="form-control"
@@ -42,17 +112,14 @@
                 <span asp-validation-for="BookingStatus" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-action="Index">Back to List</a>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

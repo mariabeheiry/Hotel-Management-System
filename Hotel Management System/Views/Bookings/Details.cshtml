@@ -104,5 +104,13 @@
 </div>
 
 <div>
-    <a asp-action="MyBookings">View Your Bookings</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    }
+    else if (User.IsInRole("Guest"))
+    {
+        <a asp-controller="Bookings" asp-action="MyBookings" class="btn btn-primary">Back to My Bookings</a>
+    }
 </div>
+

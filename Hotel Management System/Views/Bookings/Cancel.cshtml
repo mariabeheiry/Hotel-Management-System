@@ -1,0 +1,38 @@
+﻿@model Hotel_Management_System.Models.Booking
+
+@{
+    ViewData["Title"] = "Cancel Booking";
+}
+
+<h2>Cancel Booking</h2>
+
+<p>Are you sure you want to cancel this booking?</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Guest</th>
+        <td>@Model.Guest.Name</td>
+    </tr>
+    <tr>
+        <th>Room</th>
+        <td>@Model.Room.RoomNumber</td>
+    </tr>
+    <tr>
+        <th>Check-In</th>
+        <td>@Model.CheckInDate.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Check-Out</th>
+        <td>@Model.CheckOutDate.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.BookingStatus</td>
+    </tr>
+</table>
+
+<form asp-action="Cancel" method="post">
+    <input type="hidden" asp-for="BookingID" />
+    <button type="submit" class="btn btn-danger">Confirm Cancel</button>
+    <a asp-action="MyBookings" class="btn btn-secondary">Back</a>
+</form>

@@ -513,5 +513,97 @@ namespace Hotel_Management_System.Controllers
                 client.Send(mailMessage);
             }
         }
+
+        public IActionResult SearchBookings(string term, string statusFilter)
+        {
+            var bookings = _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.Room)
+                .Include(b => b.Receipt)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(term))
+            {
+                bookings = bookings.Where(b => b.Guest.Name.Contains(term) || b.Room.RoomNumber.Contains(term));
+            }
+
+            if (!string.IsNullOrEmpty(statusFilter))
+            {
+                // Parse the string to the BookingStatus enum
+                if (Enum.TryParse<BookingStatus>(statusFilter, out var statusEnum))
+                {
+                    bookings = bookings.Where(b => b.BookingStatus == statusEnum);
+                }
+            }
+
+            return PartialView("_BookingSearchResults", bookings.ToList());
+        }
+
+        // GET: Bookings/Cancel/5
+        public async Task<IActionResult> Cancel(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var booking = await _context.Bookings
+                .Include(b => b.Room)
+                .Include(b => b.Guest)
+                .FirstOrDefaultAsync(b => b.BookingID == id);
+
+            if (booking == null) return NotFound();
+
+            // Optional: make sure guest can only cancel their own booking
+            if (User.IsInRole("Guest"))
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                var guest = await _context.Guests.FirstOrDefaultAsync(g => g.IdentityUserId == currentUser.Id);
+                if (guest == null || booking.GuestID != guest.GuestID)
+                {
+                    return Forbid();
+                }
+            }
+
+            return View(booking); // confirm cancellation page
+        }
+
+        // POST: Bookings/Cancel/5
+        [HttpPost, ActionName("Cancel")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelConfirmed(int id)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.Room)
+                .Include(b => b.Receipt)
+                .FirstOrDefaultAsync(b => b.BookingID == id);
+
+            if (booking == null) return NotFound();
+
+            // 1️⃣ Update booking status
+            booking.BookingStatus = BookingStatus.Cancelled;
+
+            // 2️⃣ Make the room available again
+            var room = await _context.Rooms.FindAsync(booking.RoomID);
+            if (room != null)
+            {
+                room.IsAvailable = true;
+                _context.Rooms.Update(room);
+            }
+
+            // 3️⃣ Optionally, remove receipt or mark it ignored for revenue
+            if (booking.Receipt != null)
+            {
+                _context.Receipts.Remove(booking.Receipt);
+            }
+
+            _context.Bookings.Update(booking);
+            await _context.SaveChangesAsync();
+
+            // 4️⃣ Redirect back
+            if (User.IsInRole("Admin"))
+                return RedirectToAction(nameof(Index));
+            else
+                return RedirectToAction(nameof(MyBookings));
+        }
+
+
     }
 }

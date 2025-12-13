@@ -114,6 +114,16 @@
                         Details
                     </a>
 
+                    @if (booking.BookingStatus == BookingStatus.Confirmed)
+                    {
+                        <a asp-action="Cancel"
+                           asp-route-id="@booking.BookingID"
+                           class="btn btn-sm btn-warning">
+                            Cancel
+                        </a>
+                    }
+
+
                     @if (booking.Receipt != null)
                     {
                         <a asp-controller="Receipts" asp-action="Details"

@@ -133,7 +133,16 @@
 <h3>Total Amount</h3>
 <p class="fs-4 fw-bold">@Model.TotalAmount.ToString("C")</p>
 
+
 <p>
-    <a asp-controller="Dashboard" asp-action="GuestHome" class="btn btn-primary">Back to Dashboard</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Dashboard" asp-action="AdminHome" class="btn btn-primary">Back to Dashboard</a>
+    }
+    else if (User.IsInRole("Guest"))
+    {
+        <a asp-controller="Dashboard" asp-action="GuestHome" class="btn btn-primary">Back to Dashboard</a>
+    }
+
     <button class="btn btn-success" onclick="window.print()">Print Receipt</button>
 </p>

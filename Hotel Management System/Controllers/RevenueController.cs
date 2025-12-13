@@ -17,78 +17,44 @@ namespace Hotel_Management_System.Controllers
             _context = context;
         }
 
-        // Main Revenue View
         public async Task<IActionResult> Revenue(int? month, int? year)
         {
             await PrepareRevenueData(month, year);
             return View();
         }
 
-        // Partial view for AJAX filtering
         public async Task<IActionResult> RevenuePartial(int? month, int? year)
         {
             await PrepareRevenueData(month, year);
             return PartialView("RevenuePartial");
         }
 
-        // PDF generation
         public async Task<IActionResult> RevenuePdf(int? month, int? year)
         {
-            var bookings = await _context.Bookings
-                .Include(b => b.Room)
-                .Include(b => b.Receipt)
-                .ToListAsync();
+            var receipts = await GetFilteredReceipts(month, year);
 
-            // Build per-day revenue list
-            var dailyRevenue = new List<(DateTime Date, decimal Amount, string RoomType)>();
-            foreach (var b in bookings)
-            {
-                var days = (b.CheckOutDate - b.CheckInDate).Days;
-                if (days <= 0) continue;
-                decimal perDay = b.Room.Price;
-                for (int i = 0; i < days; i++)
-                {
-                    var date = b.CheckInDate.AddDays(i);
-                    if (b.Receipt != null)
-                        dailyRevenue.Add((date, perDay, b.Room.RoomType));
-                }
-            }
+            var totalRevenue = receipts.Sum(r => r.TotalAmount);
 
-            // Apply filtering
-            if (month.HasValue)
-                dailyRevenue = dailyRevenue.Where(d => d.Date.Month == month.Value).ToList();
-            if (year.HasValue)
-                dailyRevenue = dailyRevenue.Where(d => d.Date.Year == year.Value).ToList();
-
-            var totalRevenue = dailyRevenue.Sum(d => d.Amount);
-            var totalBookings = bookings.Count;
-            var confirmed = bookings.Count(b => b.BookingStatus == BookingStatus.Confirmed);
-            var cancelled = bookings.Count(b => b.BookingStatus == BookingStatus.Cancelled);
-            var completed = bookings.Count(b => b.BookingStatus == BookingStatus.Completed);
-
-            // Revenue by Month
-            var revenueByMonth = dailyRevenue
-                .GroupBy(d => new { d.Date.Year, d.Date.Month })
+            var revenueByMonth = receipts
+                .GroupBy(r => new { r.DateCreated.Year, r.DateCreated.Month })
                 .Select(g => new
                 {
-                    Year = g.Key.Year,
-                    Month = g.Key.Month,
-                    Revenue = g.Sum(x => x.Amount)
+                    g.Key.Year,
+                    g.Key.Month,
+                    Revenue = g.Sum(x => x.TotalAmount)
                 })
                 .OrderBy(x => x.Year).ThenBy(x => x.Month)
                 .ToList();
 
-            // Revenue by Room Type
-            var revenueByRoomType = dailyRevenue
-                .GroupBy(d => d.RoomType)
+            var revenueByRoomType = receipts
+                .GroupBy(r => r.Booking.Room.RoomType)
                 .Select(g => new
                 {
                     RoomType = g.Key,
-                    Revenue = g.Sum(x => x.Amount)
+                    Revenue = g.Sum(x => x.TotalAmount)
                 })
                 .ToList();
 
-            // PDF generation using QuestPDF
             var pdf = Document.Create(container =>
             {
                 container.Page(page =>
@@ -99,10 +65,6 @@ namespace Hotel_Management_System.Controllers
                     page.Content().Stack(stack =>
                     {
                         stack.Item().Text($"Total Revenue: {totalRevenue} USD").Bold();
-                        stack.Item().Text($"Total Bookings: {totalBookings}");
-                        stack.Item().Text($"Confirmed: {confirmed}");
-                        stack.Item().Text($"Cancelled: {cancelled}");
-                        stack.Item().Text($"Completed: {completed}");
 
                         stack.Item().PaddingVertical(10);
                         stack.Item().Text("Revenue by Month").Bold();
@@ -110,16 +72,16 @@ namespace Hotel_Management_System.Controllers
                         {
                             table.ColumnsDefinition(columns =>
                             {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn(3);
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
                             });
 
-                            table.Header(header =>
+                            table.Header(h =>
                             {
-                                header.Cell().Text("Year").Bold();
-                                header.Cell().Text("Month").Bold();
-                                header.Cell().Text("Revenue").Bold();
+                                h.Cell().Text("Year").Bold();
+                                h.Cell().Text("Month").Bold();
+                                h.Cell().Text("Revenue").Bold();
                             });
 
                             foreach (var item in revenueByMonth)
@@ -136,14 +98,14 @@ namespace Hotel_Management_System.Controllers
                         {
                             table.ColumnsDefinition(columns =>
                             {
-                                columns.RelativeColumn(3);
-                                columns.RelativeColumn(3);
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
                             });
 
-                            table.Header(header =>
+                            table.Header(h =>
                             {
-                                header.Cell().Text("Room Type").Bold();
-                                header.Cell().Text("Revenue").Bold();
+                                h.Cell().Text("Room Type").Bold();
+                                h.Cell().Text("Revenue").Bold();
                             });
 
                             foreach (var item in revenueByRoomType)
@@ -156,83 +118,66 @@ namespace Hotel_Management_System.Controllers
                 });
             });
 
-            var pdfBytes = pdf.GeneratePdf();
-            return File(pdfBytes, "application/pdf", "RevenueReport.pdf");
+            return File(pdf.GeneratePdf(), "application/pdf", "RevenueReport.pdf");
         }
 
-        // Helper method to prepare ViewBag data
+        // ================= HELPERS =================
+
+        private async Task<List<Receipt>> GetFilteredReceipts(int? month, int? year)
+        {
+            var query = _context.Receipts
+                .Include(r => r.Booking)
+                    .ThenInclude(b => b.Room)
+                .Where(r => r.Booking.BookingStatus != BookingStatus.Cancelled);
+
+            if (month.HasValue)
+                query = query.Where(r => r.DateCreated.Month == month.Value);
+
+            if (year.HasValue)
+                query = query.Where(r => r.DateCreated.Year == year.Value);
+
+            return await query.ToListAsync();
+        }
+
         private async Task PrepareRevenueData(int? month, int? year)
         {
-            var bookings = await _context.Bookings
-                .Include(b => b.Room)
-                .Include(b => b.Receipt)
-                .ToListAsync();
+            var receipts = await GetFilteredReceipts(month, year);
+            var bookings = await _context.Bookings.ToListAsync();
 
-            // Build per-day revenue list
-            var dailyRevenue = new List<(DateTime Date, decimal Amount, string RoomType)>();
-            foreach (var b in bookings)
-            {
-                var days = (b.CheckOutDate - b.CheckInDate).Days;
-                if (days <= 0) continue;
-                decimal perDay = b.Room.Price;
-                for (int i = 0; i < days; i++)
-                {
-                    var date = b.CheckInDate.AddDays(i);
-                    if (b.Receipt != null)
-                        dailyRevenue.Add((date, perDay, b.Room.RoomType));
-                }
-            }
-
-            // Apply filtering
-            if (month.HasValue)
-                dailyRevenue = dailyRevenue.Where(d => d.Date.Month == month.Value).ToList();
-            if (year.HasValue)
-                dailyRevenue = dailyRevenue.Where(d => d.Date.Year == year.Value).ToList();
-
-            ViewBag.TotalRevenue = dailyRevenue.Sum(d => d.Amount);
+            ViewBag.TotalRevenue = receipts.Sum(r => r.TotalAmount);
             ViewBag.TotalBookings = bookings.Count;
             ViewBag.Confirmed = bookings.Count(b => b.BookingStatus == BookingStatus.Confirmed);
             ViewBag.Cancelled = bookings.Count(b => b.BookingStatus == BookingStatus.Cancelled);
             ViewBag.Completed = bookings.Count(b => b.BookingStatus == BookingStatus.Completed);
 
-            ViewBag.RevenueByMonth = dailyRevenue
-                .GroupBy(d => new { d.Date.Year, d.Date.Month })
+            ViewBag.RevenueByMonth = receipts
+                .GroupBy(r => new { r.DateCreated.Year, r.DateCreated.Month })
                 .Select(g => new
                 {
-                    Year = g.Key.Year,
-                    Month = g.Key.Month,
-                    Revenue = g.Sum(x => x.Amount)
+                    g.Key.Year,
+                    g.Key.Month,
+                    Revenue = g.Sum(x => x.TotalAmount)
                 })
                 .OrderBy(x => x.Year).ThenBy(x => x.Month)
                 .ToList();
 
-            ViewBag.RevenueByRoomType = dailyRevenue
-                .GroupBy(d => d.RoomType)
+            ViewBag.RevenueByRoomType = receipts
+                .GroupBy(r => r.Booking.Room.RoomType)
                 .Select(g => new
                 {
                     RoomType = g.Key,
-                    Revenue = g.Sum(x => x.Amount)
+                    Revenue = g.Sum(x => x.TotalAmount)
                 })
                 .ToList();
 
-            // Fix: include all years from bookings and receipts
-            var bookingYears = bookings
-                .SelectMany(b => Enumerable.Range(b.CheckInDate.Year, b.CheckOutDate.Year - b.CheckInDate.Year + 1))
-                .Distinct();
-
-            var receiptYears = await _context.Receipts
+            ViewBag.Years = receipts
                 .Select(r => r.DateCreated.Year)
                 .Distinct()
-                .ToListAsync();
-
-            ViewBag.Years = bookingYears
-                .Union(receiptYears)
                 .OrderBy(y => y)
                 .ToList();
 
             ViewBag.SelectedMonth = month;
             ViewBag.SelectedYear = year;
         }
-
     }
 }
