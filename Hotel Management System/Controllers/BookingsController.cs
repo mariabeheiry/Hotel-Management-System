@@ -495,8 +495,8 @@ namespace Hotel_Management_System.Controllers
 
     public void SendBookingConfirmationEmail(string toEmail, string guestName, string emailBody)
         {
-            var fromEmail = "nourxahmed.27@gmail.com";      // your Gmail
-            var appPassword = "jmckritgszlkaqgs";      // 16-character app password from Gmail
+            var fromEmail = "maria.alaa.beheiry.6207@gmail.com";      // your Gmail
+            var appPassword = "zdbqvpogdkvmtkej";      // 16-character app password from Gmail
 
             using (var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
             {

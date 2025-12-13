@@ -17,6 +17,8 @@ namespace Hotel_Management_System.Controllers
             _context = context;
         }
 
+        // ================= ACTIONS =================
+
         public async Task<IActionResult> Revenue(int? month, int? year)
         {
             await PrepareRevenueData(month, year);
@@ -31,27 +33,27 @@ namespace Hotel_Management_System.Controllers
 
         public async Task<IActionResult> RevenuePdf(int? month, int? year)
         {
-            var receipts = await GetFilteredReceipts(month, year);
+            var dailyRevenue = await GetDailyRevenue(month, year);
 
-            var totalRevenue = receipts.Sum(r => r.TotalAmount);
+            var totalRevenue = dailyRevenue.Sum(x => x.Amount);
 
-            var revenueByMonth = receipts
-                .GroupBy(r => new { r.DateCreated.Year, r.DateCreated.Month })
+            var revenueByMonth = dailyRevenue
+                .GroupBy(x => new { x.Date.Year, x.Date.Month })
                 .Select(g => new
                 {
                     g.Key.Year,
                     g.Key.Month,
-                    Revenue = g.Sum(x => x.TotalAmount)
+                    Revenue = g.Sum(x => x.Amount)
                 })
                 .OrderBy(x => x.Year).ThenBy(x => x.Month)
                 .ToList();
 
-            var revenueByRoomType = receipts
-                .GroupBy(r => r.Booking.Room.RoomType)
+            var revenueByRoomType = dailyRevenue
+                .GroupBy(x => x.RoomType)
                 .Select(g => new
                 {
                     RoomType = g.Key,
-                    Revenue = g.Sum(x => x.TotalAmount)
+                    Revenue = g.Sum(x => x.Amount)
                 })
                 .ToList();
 
@@ -70,11 +72,11 @@ namespace Hotel_Management_System.Controllers
                         stack.Item().Text("Revenue by Month").Bold();
                         stack.Item().Table(table =>
                         {
-                            table.ColumnsDefinition(columns =>
+                            table.ColumnsDefinition(c =>
                             {
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
+                                c.RelativeColumn();
+                                c.RelativeColumn();
+                                c.RelativeColumn();
                             });
 
                             table.Header(h =>
@@ -87,7 +89,8 @@ namespace Hotel_Management_System.Controllers
                             foreach (var item in revenueByMonth)
                             {
                                 table.Cell().Text(item.Year.ToString());
-                                table.Cell().Text(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Month));
+                                table.Cell().Text(
+                                    CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Month));
                                 table.Cell().Text(item.Revenue + " USD");
                             }
                         });
@@ -96,10 +99,10 @@ namespace Hotel_Management_System.Controllers
                         stack.Item().Text("Revenue by Room Type").Bold();
                         stack.Item().Table(table =>
                         {
-                            table.ColumnsDefinition(columns =>
+                            table.ColumnsDefinition(c =>
                             {
-                                columns.RelativeColumn();
-                                columns.RelativeColumn();
+                                c.RelativeColumn();
+                                c.RelativeColumn();
                             });
 
                             table.Header(h =>
@@ -121,57 +124,89 @@ namespace Hotel_Management_System.Controllers
             return File(pdf.GeneratePdf(), "application/pdf", "RevenueReport.pdf");
         }
 
-        // ================= HELPERS =================
+        // ================= CORE LOGIC =================
 
-        private async Task<List<Receipt>> GetFilteredReceipts(int? month, int? year)
+        private record DailyRevenue(DateTime Date, decimal Amount, string RoomType);
+
+        private async Task<List<DailyRevenue>> GetDailyRevenue(int? month, int? year)
         {
-            var query = _context.Receipts
-                .Include(r => r.Booking)
-                    .ThenInclude(b => b.Room)
-                .Where(r => r.Booking.BookingStatus != BookingStatus.Cancelled);
+            var bookings = await _context.Bookings
+                .Include(b => b.Room)
+                .Include(b => b.Receipt)
+                .Where(b =>
+                    b.BookingStatus != BookingStatus.Cancelled &&
+                    b.Receipt != null)
+                .ToListAsync();
+
+            var dailyRevenue = new List<DailyRevenue>();
+
+            foreach (var b in bookings)
+            {
+                var nights = (b.CheckOutDate - b.CheckInDate).Days;
+                if (nights <= 0) continue;
+
+                decimal perNight = b.Room.Price;
+
+                for (int i = 0; i < nights; i++)
+                {
+                    var date = b.CheckInDate.AddDays(i);
+
+                    dailyRevenue.Add(new DailyRevenue(
+                        date,
+                        perNight,
+                        b.Room.RoomType
+                    ));
+                }
+            }
 
             if (month.HasValue)
-                query = query.Where(r => r.DateCreated.Month == month.Value);
+                dailyRevenue = dailyRevenue
+                    .Where(x => x.Date.Month == month.Value)
+                    .ToList();
 
             if (year.HasValue)
-                query = query.Where(r => r.DateCreated.Year == year.Value);
+                dailyRevenue = dailyRevenue
+                    .Where(x => x.Date.Year == year.Value)
+                    .ToList();
 
-            return await query.ToListAsync();
+            return dailyRevenue;
         }
 
         private async Task PrepareRevenueData(int? month, int? year)
         {
-            var receipts = await GetFilteredReceipts(month, year);
+            var dailyRevenue = await GetDailyRevenue(month, year);
+
             var bookings = await _context.Bookings.ToListAsync();
 
-            ViewBag.TotalRevenue = receipts.Sum(r => r.TotalAmount);
+            ViewBag.TotalRevenue = dailyRevenue.Sum(x => x.Amount);
+
             ViewBag.TotalBookings = bookings.Count;
             ViewBag.Confirmed = bookings.Count(b => b.BookingStatus == BookingStatus.Confirmed);
             ViewBag.Cancelled = bookings.Count(b => b.BookingStatus == BookingStatus.Cancelled);
             ViewBag.Completed = bookings.Count(b => b.BookingStatus == BookingStatus.Completed);
 
-            ViewBag.RevenueByMonth = receipts
-                .GroupBy(r => new { r.DateCreated.Year, r.DateCreated.Month })
+            ViewBag.RevenueByMonth = dailyRevenue
+                .GroupBy(x => new { x.Date.Year, x.Date.Month })
                 .Select(g => new
                 {
                     g.Key.Year,
                     g.Key.Month,
-                    Revenue = g.Sum(x => x.TotalAmount)
+                    Revenue = g.Sum(x => x.Amount)
                 })
                 .OrderBy(x => x.Year).ThenBy(x => x.Month)
                 .ToList();
 
-            ViewBag.RevenueByRoomType = receipts
-                .GroupBy(r => r.Booking.Room.RoomType)
+            ViewBag.RevenueByRoomType = dailyRevenue
+                .GroupBy(x => x.RoomType)
                 .Select(g => new
                 {
                     RoomType = g.Key,
-                    Revenue = g.Sum(x => x.TotalAmount)
+                    Revenue = g.Sum(x => x.Amount)
                 })
                 .ToList();
 
-            ViewBag.Years = receipts
-                .Select(r => r.DateCreated.Year)
+            ViewBag.Years = dailyRevenue
+                .Select(x => x.Date.Year)
                 .Distinct()
                 .OrderBy(y => y)
                 .ToList();
