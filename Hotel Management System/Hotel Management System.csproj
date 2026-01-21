@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Hotel_Management_System</RootNamespace>
+    <UserSecretsId>2b91f390-36e6-4457-8486-72f5070edb13</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

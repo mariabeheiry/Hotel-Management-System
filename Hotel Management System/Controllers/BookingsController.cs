@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Net.Mail;
 
 namespace Hotel_Management_System.Controllers
 {
@@ -491,28 +493,42 @@ namespace Hotel_Management_System.Controllers
 
             return RedirectToAction("MyBookings");
         }
-   
 
-    public void SendBookingConfirmationEmail(string toEmail, string guestName, string emailBody)
+
+        private readonly IConfiguration _configuration;
+
+        public BookingsController(IConfiguration configuration)
         {
-            var fromEmail = "maria.alaa.beheiry.6207@gmail.com";      // your Gmail
-            var appPassword = "zdbqvpogdkvmtkej";      // 16-character app password from Gmail
+            _configuration = configuration;
+        }
 
-            using (var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
+        private void SendBookingConfirmationEmail(
+            string toEmail,
+            string guestName,
+            string emailBody)
+        {
+            var fromEmail = _configuration["EmailSettings:FromEmail"];
+            var appPassword = _configuration["EmailSettings:AppPassword"];
+
+            using (var client = new SmtpClient("smtp.gmail.com", 587))
             {
-                client.Credentials = new System.Net.NetworkCredential(fromEmail, appPassword);
+                client.Credentials =
+                    new NetworkCredential(fromEmail, appPassword);
                 client.EnableSsl = true;
 
-                var mailMessage = new System.Net.Mail.MailMessage();
-                mailMessage.From = new System.Net.Mail.MailAddress(fromEmail, "Royal Stay Hotel");
+                var mailMessage = new MailMessage();
+                mailMessage.From =
+                    new MailAddress(fromEmail, "Royal Stay Hotel");
                 mailMessage.To.Add(toEmail);
                 mailMessage.Subject = "Booking Confirmation";
-                mailMessage.Body = emailBody + "\nThank you for choosing our hotel!";
-                mailMessage.IsBodyHtml = false; // plain text
+                mailMessage.Body =
+                    emailBody + "\nThank you for choosing our hotel!";
+                mailMessage.IsBodyHtml = false;
 
                 client.Send(mailMessage);
             }
         }
+
 
         public IActionResult SearchBookings(string term, string statusFilter)
         {
