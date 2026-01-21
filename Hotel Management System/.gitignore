@@ -17,6 +17,6 @@ obj/
 *.vsix
 
 #connection file
-appsettings.json
+Hotel Management System/appsettings.json
 
-appsettings.Development.json
+Hotel Management System/appsettings.Development.json
