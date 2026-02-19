@@ -14,12 +14,24 @@ namespace Hotel_Management_System.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IConfiguration _configuration;
 
-        public BookingsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public BookingsController(
+            ApplicationDbContext context,
+            UserManager<IdentityUser> userManager,
+            IConfiguration configuration)
         {
             _context = context;
             _userManager = userManager;
+            _configuration = configuration;
         }
+
+
+        //public BookingsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        //{
+        //    _context = context;
+        //    _userManager = userManager;
+        //}
 
         // GET: Bookings (list)
         public async Task<IActionResult> Index()
@@ -495,12 +507,12 @@ namespace Hotel_Management_System.Controllers
         }
 
 
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
 
-        public BookingsController(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        //public BookingsController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
         private void SendBookingConfirmationEmail(
             string toEmail,
